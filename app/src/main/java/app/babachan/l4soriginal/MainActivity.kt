@@ -5,7 +5,9 @@ import android.R.attr.bitmap
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -22,68 +24,52 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Palette.generateAsync(bitmap,
-            PaletteAsyncListener { palette ->
+        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.sky)
+
+
+        Palette.generateAsync(bitmap, object : Palette.PaletteAsyncListener {
+            override fun onGenerated(palette: Palette?) {
                 if (palette != null) {
-                    val vibrantSwatch = palette.vibrantSwatch
+                    // VibrantSwatch
+                    val vibrantSwatch = findViewById<TextView>(R.id.vibrant_swatch)
                     if (vibrantSwatch != null) {
-                        mVibrantContaienr.setBackgroundColor(vibrantSwatch.rgb)
-                        mVibrantTitleView.setTextColor(vibrantSwatch.titleTextColor)
-                        mVibrantText.setTextColor(vibrantSwatch.bodyTextColor)
-                    }
-                }
-            })
-
-        getImage.setOnClickListener {
-
-            val galleryIntetnt = Intent(Intent.ACTION_OPEN_DOCUMENT)
-            galleryIntetnt.addCategory(Intent.CATEGORY_OPENABLE)
-            galleryIntetnt.type = "image/*"
-            startActivityForResult(galleryIntetnt, readRequestCode)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        super.onActivityResult(requestCode, resultCode, resultData)
-
-        if (requestCode == readRequestCode && resultCode == Activity.RESULT_OK) {
-            resultData?.data?.also { uri ->
-                imageView.setImageURI(uri)
-
-            }
-        }
-
-//        fun createPaletteSync(bitmap: Bitmap): Palette = Palette.from(bitmap).generate()
-
-        fun createPaletteAsync(bitmap: Bitmap) {
-
-            val vibrant = myPalette.vibrantSwatch
-            val titleColor = vibrant?.titltTextColor
-
-            Palette.from(bitmap).generate {
-
-
-                fun setToolbarColor(bitmap: Bitmap) {
-                    val vibrantSwitch = createPaletteSync(bitmap).vibrantSwatch
-
-                    with(findViewById<Toolbar>(R.id.toolbar)) {
-                        setBackgroundColor(
-                            vibrantSwitch?.rab ?: ContextCompat.getColor(
-                                context,
-                                R.color.colorPrimary
-                            )
+                        vibrantSwatch.setBackgroundColor(palette.vibrantSwatch!!.rgb)
+                        vibrantSwatch.setTextColor(palette.getVibrantSwatch()!!.getTitleTextColor())
+                        val darkVibrantSwatch = findViewById<TextView>(R.id.dark_vibrant_swatch)
+                        darkVibrantSwatch.setBackgroundColor(
+                            palette.getDarkVibrantSwatch()!!.getRgb()
                         )
-                        setTitleTextColor(
-                            vibrantSwitch?.titleTextColor ?: ContextCompat.getColor(
-                                context,
-                                R.color.colorAccent
-                            )
+                        vibrantSwatch.setTextColor(
+                            palette.getDarkVibrantSwatch()!!.getTitleTextColor()
+                        )
+                        val lightVibrantSwatch = findViewById<TextView>(R.id.light_vibrant_swatch)
+                        lightVibrantSwatch.setBackgroundColor(
+                            palette.getLightVibrantSwatch()!!.getRgb()
+                        )
+                        lightVibrantSwatch.setTextColor(
+                            palette.getLightVibrantSwatch()!!.getTitleTextColor()
+                        )
+
+                        //MutedSwatch
+                        val mutedSwatch = findViewById<TextView>(R.id.muted_swatch)
+                        mutedSwatch.setBackgroundColor(palette.getMutedSwatch()!!.getRgb())
+                        mutedSwatch.setTextColor(palette.getMutedSwatch()!!.getTitleTextColor())
+                        val darkMutedSwatch = findViewById<TextView>(R.id.dark_muted_swatch)
+                        darkMutedSwatch.setBackgroundColor(palette.getDarkMutedSwatch()!!.getRgb())
+                        darkMutedSwatch.setTextColor(
+                            palette.getDarkMutedSwatch()!!.getTitleTextColor()
+                        )
+                        val lightMutedSwatch = findViewById<TextView>(R.id.light_muted_swatch)
+                        lightMutedSwatch.setBackgroundColor(palette.getLightMutedSwatch()!!.getRgb())
+                        lightMutedSwatch.setTextColor(
+                            palette.getLightMutedSwatch()!!.getTitleTextColor()
                         )
                     }
                 }
-
             }
-        }
+        })
+
 
     }
+
 }
