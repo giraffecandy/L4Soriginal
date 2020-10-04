@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
@@ -24,8 +25,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.sky)
+        getImage.setOnClickListener {
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+            intent.type = "image/*"
+            startActivityForResult(intent, readRequestCode)
+        }
 
+
+
+
+
+
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, resultData)
+
+        if (requestCode == readRequestCode && resultCode == Activity.RESULT_OK)
+            resultData?.data?.also { uri ->
+//                image
+                imageView.setImageURI(uri)
+            }
+
+//        val image = imageView
+        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.sky)
 
         Palette.generateAsync(bitmap, object : Palette.PaletteAsyncListener {
             override fun onGenerated(palette: Palette?) {
@@ -60,7 +85,9 @@ class MainActivity : AppCompatActivity() {
                             palette.getDarkMutedSwatch()!!.getTitleTextColor()
                         )
                         val lightMutedSwatch = findViewById<TextView>(R.id.light_muted_swatch)
-                        lightMutedSwatch.setBackgroundColor(palette.getLightMutedSwatch()!!.getRgb())
+                        lightMutedSwatch.setBackgroundColor(
+                            palette.getLightMutedSwatch()!!.getRgb()
+                        )
                         lightMutedSwatch.setTextColor(
                             palette.getLightMutedSwatch()!!.getTitleTextColor()
                         )
@@ -68,8 +95,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-
-
     }
-
 }
