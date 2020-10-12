@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
         android:text="画像を取得する"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -39,21 +40,22 @@
         app:layout_constraintBottom_toTopOf="@+id/getImage">
 
         <TextView
-            android:id="@+id/vibrant_swatch"
+            android:id="@+id/vibrantSwatch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:padding="5dp"
             android:text="VibrantSwatch" />
 
         <TextView
-            android:id="@+id/dark_vibrant_swatch"
+            android:id="@+id/darkVibrantSwatch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="DarkVibrantSwatch" />
 
         <TextView
-            android:id="@+id/light_vibrant_swatch"
+            android:id="@+id/lightVibrantSwatch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
