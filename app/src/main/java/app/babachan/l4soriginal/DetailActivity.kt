@@ -1,5 +1,6 @@
 package app.babachan.l4soriginal
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -455,7 +456,8 @@ class DetailActivity : AppCompatActivity() {
 
         val adapter = RecyclerViewAdapter(this, object : RecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(item: ColorData) {
-                floatingActionButton.setBackgroundDrawable(ColorDrawable(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB)))
+                floatingActionButton.backgroundTintList =
+                    ColorStateList.valueOf(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB))
                 accentTextView.setBackgroundColor(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB))
 //                floatingActionButton.setBackgroundColor(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB))
             }
