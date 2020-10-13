@@ -3,8 +3,11 @@ package app.babachan.l4soriginal
 import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.palette.graphics.Palette
@@ -28,11 +31,12 @@ class MainActivity : AppCompatActivity() {
             override fun onGenerated(palette: Palette?) {
                 if (palette != null) {
                     // VibrantSwatch
-                    val vibrantSwatch = findViewById<TextView>(R.id.vibrantSwatch)
+                    val vibrantSwatch = findViewById<TextView>(R.id.vibrantSwatchTextView)
                     if (vibrantSwatch != null) {
                         vibrantSwatch.setBackgroundColor(palette.vibrantSwatch!!.rgb)
+
                         vibrantSwatch.setTextColor(palette.getVibrantSwatch()!!.getTitleTextColor())
-                        val hex = String.format("#%02x%02x%02x", palette.vibrantSwatch)
+                        val hex = String.format("#", palette.vibrantSwatch)
                         vibrantSwatch.setText(hex)
                         val darkVibrantSwatch = findViewById<TextView>(R.id.darkVibrantSwatch)
                         darkVibrantSwatch.setBackgroundColor(
@@ -67,6 +71,30 @@ class MainActivity : AppCompatActivity() {
 //                        )
                     }
                 }
+
+//            vibrantSwatchTextView.setOnClickListener {
+                if (palette != null) {
+//                    val str = "ABCDＡＢＣＤ12345１２３４５abcd"
+//                    val ret = str.replace("[^0-9]".toRegex(), "").toInt()
+//                    println(ret)
+//                    Log.d("jj",ret.toString())
+//                    val vibBackColor = palette.vibrantSwatch.toString()
+//                    val getColor = vibrantSwatchTextView.setBackgroundColor()
+
+                    val color = (vibrantSwatchTextView.background as ColorDrawable).color
+
+//                    val lay = findViewById<LinearLayout>(R.id.text1)
+//                    val viewColor = lay.background as ColorDrawable
+//                    val colorId = viewColor.color
+
+
+//                    val intent = Intent(applicationContext, DetailActivity::class.java)
+//                    intent.putExtra("VIB", vibBackColor)
+                    Log.d( "gg", color.toString())
+//                    startActivity(intent)
+                }
+//            }
+
             }
         })
 
@@ -78,12 +106,19 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, readRequestCode)
         }
 
-        vibrantSwatch.setOnClickListener {
-            val vibColor = vibrantSwatch.text.toString()
-            val vibrantIntent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("VIB", vibColor)
-            startActivity(vibrantIntent)
-        }
+
+//        vibrantSwatchTextView.setOnClickListener {
+//            val vibColor = vibrantSwatchTextView.getBackground()
+////            val vibColor = vibrantSwatchTextView.text.toString()
+//            val vibrantIntent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("VIB", vibColor)
+//            Log.d("gg", vibColor)
+////            if (VIB == null) {
+////                Toast.makeText(applicationContext, "色がありません", Toast.LENGTH_SHORT).show()
+////
+////            }
+//            startActivity(vibrantIntent)
+//        }
 
     }
 
@@ -107,7 +142,7 @@ class MainActivity : AppCompatActivity() {
             override fun onGenerated(palette: Palette?) {
                 if (palette != null) {
                     // VibrantSwatch
-                    val vibrantSwatch = findViewById<TextView>(R.id.vibrantSwatch)
+                    val vibrantSwatch = findViewById<TextView>(R.id.vibrantSwatchTextView)
                     if (vibrantSwatch != null) {
                         palette.vibrantSwatch?.rgb?.let { vibrantSwatch.setBackgroundColor(it) }
                         palette.getVibrantSwatch()?.getTitleTextColor()?.let {

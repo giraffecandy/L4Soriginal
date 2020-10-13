@@ -40,7 +40,7 @@
         app:layout_constraintBottom_toTopOf="@+id/getImage">
 
         <TextView
-            android:id="@+id/vibrantSwatch"
+            android:id="@+id/vibrantSwatchTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"

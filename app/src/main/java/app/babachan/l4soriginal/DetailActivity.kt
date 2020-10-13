@@ -9,8 +9,8 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
 
-        val colorData: List<ColorData> = listOf(
-            //red
+    val colorData: List<ColorData> = listOf(
+        //red
 //            ColorData(50, 255, 235, 238),
 //            ColorData(100, 255, 205, 210),
 //            ColorData(200, 239, 154, 154),
@@ -238,7 +238,7 @@ class DetailActivity : AppCompatActivity() {
 //            ColorData(800),
 //            ColorData(900),
 
-            //            //orange
+        //            //orange
 //            ColorData(50),
 //            ColorData(100),
 //            ColorData(200),
@@ -299,125 +299,141 @@ class DetailActivity : AppCompatActivity() {
 //            ColorData(900),
 
 
-            //red
-            ColorData(100, 255, 138, 128),
-            ColorData(200, 255, 82, 82),
-            ColorData(400, 255, 23, 68),
-            ColorData(700, 213, 0, 0),
+        //red
+        ColorData(100, 255, 138, 128),
+        ColorData(200, 255, 82, 82),
+        ColorData(400, 255, 23, 68),
+        ColorData(700, 213, 0, 0),
 
-            //pink
-            ColorData(100, 255, 128, 171),
-            ColorData(200, 255, 64, 129),
-            ColorData(400, 245, 0, 87),
-            ColorData(700, 197, 17, 98),
+        //pink
+        ColorData(100, 255, 128, 171),
+        ColorData(200, 255, 64, 129),
+        ColorData(400, 245, 0, 87),
+        ColorData(700, 197, 17, 98),
 
-            //purple
-            ColorData(100, 234, 128, 252),
-            ColorData(200),
-            ColorData(400),
-            ColorData(700),
+        //purple
+        ColorData(100, 234, 128, 252),
+        ColorData(200),
+        ColorData(400),
+        ColorData(700),
 
-            //deepPurple
-            ColorData(100, 179, 136, 255),
-            ColorData(200, 124, 77, 255),
-            ColorData(400, 101, 31, 255),
-            ColorData(700, 98, 0, 234),
+        //deepPurple
+        ColorData(100, 179, 136, 255),
+        ColorData(200, 124, 77, 255),
+        ColorData(400, 101, 31, 255),
+        ColorData(700, 98, 0, 234),
 
-            //indigo
-            ColorData(100, 140, 158, 255),
-            ColorData(200, 83, 109, 254),
-            ColorData(400, 61, 90, 254),
-            ColorData(700, 48, 79, 254),
+        //indigo
+        ColorData(100, 140, 158, 255),
+        ColorData(200, 83, 109, 254),
+        ColorData(400, 61, 90, 254),
+        ColorData(700, 48, 79, 254),
 
-            //blue
-            ColorData(100, 130, 177, 255),
-            ColorData(200, 68, 138, 255),
-            ColorData(400, 41, 121, 255),
-            ColorData(700, 41, 98, 255),
+        //blue
+        ColorData(100, 130, 177, 255),
+        ColorData(200, 68, 138, 255),
+        ColorData(400, 41, 121, 255),
+        ColorData(700, 41, 98, 255),
 
-            //lightblue
-            ColorData(100, 128, 216, 255),
-            ColorData(200, 64, 196, 255),
-            ColorData(400, 0, 176, 255),
-            ColorData(700, 0, 145, 234),
+        //lightblue
+        ColorData(100, 128, 216, 255),
+        ColorData(200, 64, 196, 255),
+        ColorData(400, 0, 176, 255),
+        ColorData(700, 0, 145, 234),
 
-            //cyan
-            ColorData(100, 132, 255, 255),
-            ColorData(200, 24, 255, 255),
-            ColorData(400, 0, 229, 255),
-            ColorData(700, 0, 184, 212),
+        //cyan
+        ColorData(100, 132, 255, 255),
+        ColorData(200, 24, 255, 255),
+        ColorData(400, 0, 229, 255),
+        ColorData(700, 0, 184, 212),
 
-            //teal
-            ColorData(100, 167, 255, 235),
-            ColorData(200, 100, 255, 218),
-            ColorData(400, 29, 233, 182),
-            ColorData(700, 0, 191, 165),
+        //teal
+        ColorData(100, 167, 255, 235),
+        ColorData(200, 100, 255, 218),
+        ColorData(400, 29, 233, 182),
+        ColorData(700, 0, 191, 165),
 
-            //green
-            ColorData(100, 185, 246, 202),
-            ColorData(200, 105, 240, 174),
-            ColorData(400, 0, 230, 118),
-            ColorData(700, 0, 200, 83),
+        //green
+        ColorData(100, 185, 246, 202),
+        ColorData(200, 105, 240, 174),
+        ColorData(400, 0, 230, 118),
+        ColorData(700, 0, 200, 83),
 
-            //lightGreen
-            ColorData(100, 204, 255, 144),
-            ColorData(200, 178, 255, 89),
-            ColorData(400, 118, 255, 3),
-            ColorData(700, 100, 221, 23),
+        //lightGreen
+        ColorData(100, 204, 255, 144),
+        ColorData(200, 178, 255, 89),
+        ColorData(400, 118, 255, 3),
+        ColorData(700, 100, 221, 23),
 
-            //lime
-            ColorData(100, 244, 255, 129),
-            ColorData(200, 238, 255, 65),
-            ColorData(400, 198, 255, 0),
-            ColorData(700, 174, 234, 0),
+        //lime
+        ColorData(100, 244, 255, 129),
+        ColorData(200, 238, 255, 65),
+        ColorData(400, 198, 255, 0),
+        ColorData(700, 174, 234, 0),
 
-            //yellow
-            ColorData(100, 255, 255, 141),
-            ColorData(200, 255, 255, 0),
-            ColorData(400, 255, 234, 0),
-            ColorData(700, 255, 214, 0),
+        //yellow
+        ColorData(100, 255, 255, 141),
+        ColorData(200, 255, 255, 0),
+        ColorData(400, 255, 234, 0),
+        ColorData(700, 255, 214, 0),
 
-            //amber
-            ColorData(100, 255, 229, 127),
-            ColorData(200, 255, 215, 64),
-            ColorData(400, 255, 196, 0),
-            ColorData(700, 255, 171, 0),
+        //amber
+        ColorData(100, 255, 229, 127),
+        ColorData(200, 255, 215, 64),
+        ColorData(400, 255, 196, 0),
+        ColorData(700, 255, 171, 0),
 
-            //orange
-            ColorData(100, 255, 209, 128),
-            ColorData(200, 255, 171, 64),
-            ColorData(400, 255, 145, 0),
-            ColorData(700, 255, 109, 0),
+        //orange
+        ColorData(100, 255, 209, 128),
+        ColorData(200, 255, 171, 64),
+        ColorData(400, 255, 145, 0),
+        ColorData(700, 255, 109, 0),
 
-            //deepOrange
-            ColorData(100, 255, 158, 128),
-            ColorData(200, 255, 110, 64),
-            ColorData(400, 255, 61, 0),
-            ColorData(700, 221, 44, 0)
+        //deepOrange
+        ColorData(100, 255, 158, 128),
+        ColorData(200, 255, 110, 64),
+        ColorData(400, 255, 61, 0),
+        ColorData(700, 221, 44, 0)
 
-            )
+    )
 
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_detail)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_detail)
 
-            val vibDetail = intent.getStringExtra("VIB")
-            primaryTextView.setText("#" + vibDetail)
+        val vibDetail = intent.getStringExtra("VIB") ?: "555"
+        val vibDetailInt = vibDetail.toInt()
+        primaryTextView.setText("#" + vibDetail)
+//            primaryTextView.setBackgroundColor()
+//
+//            val v: View = target //    対象のビューです。
+//
+//            val colorInt = v.getBackground().color
+//            val colort = resources.getColor(R.color.primaryCo)
+        val color: Int = vibDetail.toInt(16)
 
-            fun getRgbFromHex(): IntArray {
-                val initColor = Color.parseColor(vibDetail)
-                val r = Color.red(initColor)
-                val g = Color.green(initColor)
-                val b = Color.blue(initColor)
-                return intArrayOf(r, g, b)
-            }
+//            val color = ContextCompat.getColor(applicationContext, vibDetailInt)
+        val red = color shr 16 and 0xFF.toFloat().toInt()
+        val green = color shr 8 and 0xFF.toFloat().toInt()
+        val blue = color shr 0 and 0xFF.toFloat().toInt()
+        val alpha = (color shr 24 and 0xFF.toFloat().toInt()).toFloat()
 
-            val primaryR = getRgbFromHex()[0]
-            val primaryG = getRgbFromHex()[1]
-            val primaryB = getRgbFromHex()[2]
+        primaryTextView.setBackgroundColor(Color.rgb(red, green, blue))
 
-            primaryTextView.setBackgroundColor(Color.rgb(primaryR, primaryG, primaryB))
+//            fun getRgbFromHex(): IntArray {
+//                val initColor = Color.parseColor(vibDetail)
+//                val r = Color.red(initColor)
+//                val g = Color.green(initColor)
+//                val b = Color.blue(initColor)
+//                return intArrayOf(r, g, b)
+//            }
+
+//            val primaryR = getRgbFromHex()[0]
+//            val primaryG = getRgbFromHex()[1]
+//            val primaryB = getRgbFromHex()[2]
+
+//            primaryTextView.setBackgroundColor(Color.rgb(primaryR, primaryG, primaryB))
 
 //            val c = Color(vibDetail)
 //            val color: Color = Color.decode(vibDetail)
@@ -426,11 +442,16 @@ class DetailActivity : AppCompatActivity() {
 //            val green: Int = color.getGreen()
 
 
-            val adapter = RecyclerViewAdapter(this)
-            recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-            recyclerView.adapter = adapter
+        val adapter = RecyclerViewAdapter(this, object : RecyclerViewAdapter.OnItemClickListener {
+            override fun onItemClick(item: ColorData) {
+                accentTextView.setBackgroundColor(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB))
+            }
+        })
+        recyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.adapter = adapter
 
-            adapter.addAll(colorData)
+        adapter.addAll(colorData)
 
 //            adapter.setOnItemClickListener(object: CustomAdapter.OnItemClickListener{
 //                override fun onItemClickListener(view: View, position: Int) {
