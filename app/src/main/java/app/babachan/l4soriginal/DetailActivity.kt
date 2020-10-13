@@ -1,14 +1,17 @@
 package app.babachan.l4soriginal
 
+import android.app.AlertDialog
+import android.app.PendingIntent.getActivity
+import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.realm.Realm
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.accent_color_cell.*
 import kotlinx.android.synthetic.main.activity_detail.*
 
 
@@ -320,9 +323,9 @@ class DetailActivity : AppCompatActivity() {
 
         //purple
         ColorData(100, 234, 128, 252),
-        ColorData(200),
-        ColorData(400),
-        ColorData(700),
+        ColorData(200,224,64,251),
+        ColorData(400, 213, 0, 249),
+        ColorData(700, 170, 0, 255),
 
         //deepPurple
         ColorData(100, 179, 136, 255),
@@ -454,6 +457,11 @@ class DetailActivity : AppCompatActivity() {
 //            val green: Int = color.getGreen()
 
 
+//primaryDark
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+//        window.statusBarColor = Color.parseColor("カラーコード")
+        //primary
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.rgb(red,green,blue)))
         val adapter = RecyclerViewAdapter(this, object : RecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(item: ColorData) {
                 floatingActionButton.backgroundTintList =
@@ -474,7 +482,17 @@ class DetailActivity : AppCompatActivity() {
 //                }
 //            })
 
-//            floatingActionButton.setOnClickListener { }
+            floatingActionButton.setOnClickListener {
+                AlertDialog.Builder(this)
+//                    .setTitle("title")
+                    .setMessage("このパレットをお気に入りに追加しますか")
+                    .setPositiveButton("OK",
+                        DialogInterface.OnClickListener { dialog, which ->
+                            // OK button pressed
+                        })
+                    .setNegativeButton("Cancel", null)
+                    .show()
+            }
     }
 
     override fun onDestroy() {

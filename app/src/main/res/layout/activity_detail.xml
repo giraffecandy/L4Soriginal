@@ -34,13 +34,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="72dp"
         android:orientation="horizontal"
         android:weightSum="10"
+        android:background="@drawable/frame"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/primaryTextView"
@@ -59,7 +60,8 @@
             android:id="@+id/accentTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5" />
+            android:layout_weight="1.5"
+            android:background="@drawable/frame"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
