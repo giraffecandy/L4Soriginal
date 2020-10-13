@@ -19,7 +19,7 @@ class RecyclerViewAdapter(
 ) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
     //    lateinit var listener: OnItemClickListener
-    val items: MutableList<ColorData> = mutableListOf()
+    private val items: MutableList<ColorData> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.accent_color_cell, parent, false)
@@ -42,8 +42,8 @@ class RecyclerViewAdapter(
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val accentColorCell: TextView = view.findViewById(R.id.accentColorCell)
-        val container: ConstraintLayout? = view.container
+        private val accentColorCell: TextView = view.findViewById(R.id.accentColorCell)
+        private val container: ConstraintLayout? = view.container
 
         fun bind(colorData: ColorData, listener: OnItemClickListener) {
             accentColorCell.setBackgroundColor(

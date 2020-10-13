@@ -1,6 +1,7 @@
 package app.babachan.l4soriginal
 
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -445,6 +446,8 @@ class DetailActivity : AppCompatActivity() {
         val adapter = RecyclerViewAdapter(this, object : RecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(item: ColorData) {
                 accentTextView.setBackgroundColor(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB))
+//                floatingActionButton.setBackgroundColor(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB))
+                floatingActionButton.setBackgroundDrawable(ColorDrawable(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB)))
             }
         })
         recyclerView.layoutManager =

@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-//            vibrantSwatchTextView.setOnClickListener {
+            vibrantSwatchTextView.setOnClickListener {
                 if (palette != null) {
 //                    val str = "ABCDＡＢＣＤ12345１２３４５abcd"
 //                    val ret = str.replace("[^0-9]".toRegex(), "").toInt()
@@ -88,12 +88,12 @@ class MainActivity : AppCompatActivity() {
 //                    val colorId = viewColor.color
 
 
-//                    val intent = Intent(applicationContext, DetailActivity::class.java)
+                    val intent = Intent(applicationContext, DetailActivity::class.java)
 //                    intent.putExtra("VIB", vibBackColor)
                     Log.d( "gg", color.toString())
-//                    startActivity(intent)
+                    startActivity(intent)
                 }
-//            }
+            }
 
             }
         })
