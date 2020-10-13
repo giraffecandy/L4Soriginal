@@ -5,10 +5,15 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import io.realm.Realm
+import io.realm.RealmResults
+import kotlinx.android.synthetic.main.accent_color_cell.*
 import kotlinx.android.synthetic.main.activity_detail.*
 
 
 class DetailActivity : AppCompatActivity() {
+
+    val realm: Realm = Realm.getDefaultInstance()
 
     val colorData: List<ColorData> = listOf(
         //red
@@ -403,6 +408,11 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+//        val colorDataList = readAll()
+//
+//        if (colorDataList.isEmpty()) {
+//
+//        }
         val vibDetail = intent.getStringExtra("VIB") ?: "555"
         val vibDetailInt = vibDetail.toInt()
         primaryTextView.setText("#" + vibDetail)
@@ -445,9 +455,9 @@ class DetailActivity : AppCompatActivity() {
 
         val adapter = RecyclerViewAdapter(this, object : RecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(item: ColorData) {
+                floatingActionButton.setBackgroundDrawable(ColorDrawable(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB)))
                 accentTextView.setBackgroundColor(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB))
 //                floatingActionButton.setBackgroundColor(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB))
-                floatingActionButton.setBackgroundDrawable(ColorDrawable(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB)))
             }
         })
         recyclerView.layoutManager =
@@ -465,4 +475,21 @@ class DetailActivity : AppCompatActivity() {
 //            floatingActionButton.setOnClickListener { }
     }
 
-}
+    override fun onDestroy() {
+        super.onDestroy()
+        realm.close()
+    }
+
+    fun readAll(): RealmResults<ColorData> {
+        return realm.where(ColorData::class.java).findAll()
+    }
+
+    fun read() : RealmResults<ColorData>? {
+        return realm.where(ColorData::class.java).findAll()
+    }
+
+//    fun setBackgroundColor(){
+//        colorData.forEach {i->
+//            accentColorCell.setBackgroundColor(Color.rgb())
+//        }
+    }

@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
                     val vibrantSwatch = findViewById<TextView>(R.id.vibrantSwatchTextView)
                     if (vibrantSwatch != null) {
                         vibrantSwatch.setBackgroundColor(palette.vibrantSwatch!!.rgb)
+                        Log.d("jj", palette.vibrantSwatch.toString())
+                        Log.d("kk", palette.vibrantSwatch!!.rgb.toString())
 
                         vibrantSwatch.setTextColor(palette.getVibrantSwatch()!!.getTitleTextColor())
                         val hex = String.format("#", palette.vibrantSwatch)
