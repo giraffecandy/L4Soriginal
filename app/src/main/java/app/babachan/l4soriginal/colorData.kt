@@ -1,7 +1,5 @@
 package app.babachan.l4soriginal
 
-import io.realm.RealmObject
-
 open class ColorData(
     var index: Int = 0,
 //    var primaryColorR: Int = 0,
@@ -13,4 +11,4 @@ open class ColorData(
     var accentColorR: Int = 0,
     var accentColorG: Int = 0,
     var accentColorB: Int = 0
-): RealmObject()
+)

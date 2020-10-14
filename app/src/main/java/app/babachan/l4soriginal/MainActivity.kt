@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.palette.graphics.Palette
@@ -74,28 +73,26 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-            vibrantSwatchTextView.setOnClickListener {
-                if (palette != null) {
-//                    val str = "ABCDＡＢＣＤ12345１２３４５abcd"
-//                    val ret = str.replace("[^0-9]".toRegex(), "").toInt()
-//                    println(ret)
-//                    Log.d("jj",ret.toString())
-//                    val vibBackColor = palette.vibrantSwatch.toString()
-//                    val getColor = vibrantSwatchTextView.setBackgroundColor()
+                vibrantSwatchTextView.setOnClickListener {
+                    if (palette != null) {
+                        val color = (vibrantSwatchTextView.background as ColorDrawable).color
 
-                    val color = (vibrantSwatchTextView.background as ColorDrawable).color
-
-//                    val lay = findViewById<LinearLayout>(R.id.text1)
-//                    val viewColor = lay.background as ColorDrawable
-//                    val colorId = viewColor.color
-
-
-                    val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
 //                    intent.putExtra("VIB", vibBackColor)
-                    Log.d( "gg", color.toString())
+                        Log.d("gg", color.toString())
+                        startActivity(intent)
+                    }
+                }
+
+                darkVibrantSwatch.setOnClickListener {
+                    val intent = Intent(applicationContext, DetailActivity::class.java)
                     startActivity(intent)
                 }
-            }
+
+                lightVibrantSwatch.setOnClickListener {
+                    val intent = Intent(applicationContext, DetailActivity::class.java)
+                    startActivity(intent)
+                }
 
             }
         })
@@ -207,6 +204,21 @@ class MainActivity : AppCompatActivity() {
 //                        }
                     }
                 }
+
+                vibrantSwatchTextView.setOnClickListener {
+                    val intent = Intent(applicationContext, DetailActivity::class.java)
+                    startActivity(intent)
+                }
+                darkVibrantSwatch.setOnClickListener {
+                    val intent = Intent(applicationContext, DetailActivity::class.java)
+                    startActivity(intent)
+                }
+
+                lightVibrantSwatch.setOnClickListener {
+                    val intent = Intent(applicationContext, DetailActivity::class.java)
+                    startActivity(intent)
+                }
+
             }
         })
     }
