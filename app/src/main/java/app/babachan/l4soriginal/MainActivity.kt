@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.palette.graphics.Palette
+import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.String
 
@@ -76,11 +77,20 @@ class MainActivity : AppCompatActivity() {
                 vibrantSwatchTextView.setOnClickListener {
                     if (palette != null) {
                         val color = (vibrantSwatchTextView.background as ColorDrawable).color
-
+//                        public int getRgb()
+                        val rgbClr = palette.vibrantSwatch?.rgb
+                        val rgbs = palette.vibrantSwatch!!.getRgb()
                         val intent = Intent(applicationContext, DetailActivity::class.java)
-//                    intent.putExtra("VIB", vibBackColor)
+                    intent.putExtra("VIB", rgbClr)
                         Log.d("gg", color.toString())
-                        startActivity(intent)
+//                        if (primaryTextView?.background != null) {
+                            if (primaryTextView?.background is ColorDrawable) {
+                                val colorCode = (primaryTextView.background as ColorDrawable).color
+                                Log.d("mmmm", colorCode.toString())
+                            }
+//                        }
+                            startActivity(intent)
+
                     }
                 }
 
@@ -96,6 +106,28 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+//        object PixelColorTest {
+//            @JvmStatic
+//            fun main(args: Array<kotlin.String>) {
+//                try {
+//                    val filePath = "c:\\test\\test.jpeg"
+//
+//                    //画像ファイルを読み込む
+//                    val clr = R.id.primaryTextView
+//
+//                    //座標(10,20)の色を取得
+//                    val color = Color(clr.getRGB(10, 20))
+//
+//                    //取得した色を標準出力
+//                    System.out.println("R:" + color.getRed())
+//                    System.out.println("G:" + color.getGreen())
+//                    System.out.println("B:" + color.getBlue())
+//                    System.out.println("A:" + color.getAlpha())
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//            }
+//        }
 
 
         getImage.setOnClickListener {

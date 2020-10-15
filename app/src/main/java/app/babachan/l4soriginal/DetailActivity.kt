@@ -409,8 +409,10 @@ val first = (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primary
 //        if (colorDataList.isEmpty()) {
 //
 //        }
-        val vibDetail = intent.getStringExtra("VIB") ?: "555"
+        val vibDetail = intent.getIntExtra("VIB", 555)
+        Log.d("sss", vibDetail.toString())
         val vibDetailInt = vibDetail.toInt()
+        primaryTextView.setBackgroundColor(vibDetailInt)
         primaryTextView.setText("#" + vibDetail)
 //            primaryTextView.setBackgroundColor()
 //
@@ -418,7 +420,7 @@ val first = (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primary
 //
 //            val colorInt = v.getBackground().color
 //            val colort = resources.getColor(R.color.primaryCo)
-        val color: Int = vibDetail.toInt(16)
+        val color: Int = vibDetail.toInt()
 
 //            val color = ContextCompat.getColor(applicationContext, vibDetailInt)
         val red = color shr 16 and 0xFF.toFloat().toInt()
