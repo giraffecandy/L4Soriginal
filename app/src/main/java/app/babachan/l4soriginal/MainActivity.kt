@@ -3,14 +3,12 @@ package app.babachan.l4soriginal
 import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.palette.graphics.Palette
-import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.String
 
@@ -56,53 +54,78 @@ class MainActivity : AppCompatActivity() {
                         )
 
 //                        //MutedSwatch
-//                        val mutedSwatch = findViewById<TextView>(R.id.muted_swatch)
-//                        mutedSwatch.setBackgroundColor(palette.getMutedSwatch()!!.getRgb())
+//                        val mutedSwatch = findViewById<TextView>(R.id.mutedSwatch)
+//                        mutedSwatch.setBackgroundColor(palette.mutedSwatch!!.rgb)
 //                        mutedSwatch.setTextColor(palette.getMutedSwatch()!!.getTitleTextColor())
 //                        val darkMutedSwatch = findViewById<TextView>(R.id.dark_muted_swatch)
 //                        darkMutedSwatch.setBackgroundColor(palette.getDarkMutedSwatch()!!.getRgb())
 //                        darkMutedSwatch.setTextColor(
 //                            palette.getDarkMutedSwatch()!!.getTitleTextColor()
 //                        )
-//                        val lightMutedSwatch = findViewById<TextView>(R.id.light_muted_swatch)
+//                        val lightMutedSwatch = findViewById<TextView>(R.id.lightMutedSwatch)
 //                        lightMutedSwatch.setBackgroundColor(
-//                            palette.getLightMutedSwatch()!!.getRgb()
+//                            if (palette.lightMutedSwatch != null) {
+//                                palette.getLightMutedSwatch()!!.getRgb()
+//                            } else {
+//                                5
+//                            }
 //                        )
-//                        lightMutedSwatch.setTextColor(
-//                            palette.getLightMutedSwatch()!!.getTitleTextColor()
-//                        )
+//                        if (palette.lightMutedSwatch != null) {
+//                            lightMutedSwatch.setTextColor(
+//                                palette.getLightMutedSwatch()!!.getTitleTextColor()
+//
+//                        )}
                     }
-                }
 
-                vibrantSwatchTextView.setOnClickListener {
-                    if (palette != null) {
-                        val color = (vibrantSwatchTextView.background as ColorDrawable).color
+                    vibrantSwatchTextView.setOnClickListener {
+//                        val color = (vibrantSwatchTextView.background as ColorDrawable).color
 //                        public int getRgb()
-                        val rgbClr = palette.vibrantSwatch?.rgb
-                        val rgbs = palette.vibrantSwatch!!.getRgb()
-                        val intent = Intent(applicationContext, DetailActivity::class.java)
-                    intent.putExtra("VIB", rgbClr)
-                        Log.d("gg", color.toString())
-//                        if (primaryTextView?.background != null) {
-                            if (primaryTextView?.background is ColorDrawable) {
-                                val colorCode = (primaryTextView.background as ColorDrawable).color
-                                Log.d("mmmm", colorCode.toString())
-                            }
-//                        }
+                            val backColor = palette.vibrantSwatch?.rgb
+                            val intent = Intent(applicationContext, DetailActivity::class.java)
+                            intent.putExtra("VIB", backColor)
+//                        Log.d("gg", color.toString())
                             startActivity(intent)
+                        }
 
-                    }
+                    darkVibrantSwatch.setOnClickListener {
+                            val intent = Intent(applicationContext, DetailActivity::class.java)
+                            val backColor = palette.darkVibrantSwatch?.rgb
+                            intent.putExtra("VIB", backColor)
+                            startActivity(intent)
+                        }
+
+                    lightVibrantSwatch.setOnClickListener {
+                            val intent = Intent(applicationContext, DetailActivity::class.java)
+                            val backColor = palette.lightVibrantSwatch?.rgb
+                            intent.putExtra("VIB", backColor)
+                            startActivity(intent)
+                        }
+
+//                    mutedSwatch.setOnClickListener {
+//                            val intent = Intent(applicationContext, DetailActivity::class.java)
+//                            val backColor = palette.mutedSwatch?.rgb
+//                            intent.putExtra("VIB", backColor)
+//                        Log.d("bbb", backColor.toString())
+//                            startActivity(intent)
+//                        }
+//
+//                    mutedSwatch.setOnClickListener {
+//                            val intent = Intent(applicationContext, DetailActivity::class.java)
+//                            val backColor = palette.darkMutedSwatch?.rgb
+//                            intent.putExtra("VIB", backColor)
+//                            startActivity(intent)
+//                        }
+//
+//                    mutedSwatch.setOnClickListener {
+//                            val intent = Intent(applicationContext, DetailActivity::class.java)
+//                            val backColor = palette.lightMutedSwatch?.rgb
+//                            intent.putExtra("VIB", backColor)
+//                            startActivity(intent)
+//                        }
+
                 }
 
-                darkVibrantSwatch.setOnClickListener {
-                    val intent = Intent(applicationContext, DetailActivity::class.java)
-                    startActivity(intent)
-                }
 
-                lightVibrantSwatch.setOnClickListener {
-                    val intent = Intent(applicationContext, DetailActivity::class.java)
-                    startActivity(intent)
-                }
 
             }
         })
@@ -205,7 +228,7 @@ class MainActivity : AppCompatActivity() {
                         }
 
 //                        //MutedSwatch
-//                        val mutedSwatch = findViewById<TextView>(R.id.muted_swatch)
+//                        val mutedSwatch = findViewById<TextView>(R.id.mutedSwatch)
 //                        palette.getMutedSwatch()?.getRgb()?.let { mutedSwatch.setBackgroundColor(it) }
 //                        palette.getMutedSwatch()?.getTitleTextColor()?.let {
 //                            mutedSwatch.setTextColor(
@@ -223,7 +246,7 @@ class MainActivity : AppCompatActivity() {
 //                                it
 //                            )
 //                        }
-//                        val lightMutedSwatch = findViewById<TextView>(R.id.light_muted_swatch)
+//                        val lightMutedSwatch = findViewById<TextView>(R.id.lightMutedSwatch)
 //                        palette.getLightMutedSwatch()?.getRgb()?.let {
 //                            lightMutedSwatch.setBackgroundColor(
 //                                it
@@ -235,20 +258,53 @@ class MainActivity : AppCompatActivity() {
 //                            )
 //                        }
                     }
-                }
 
-                vibrantSwatchTextView.setOnClickListener {
-                    val intent = Intent(applicationContext, DetailActivity::class.java)
-                    startActivity(intent)
-                }
-                darkVibrantSwatch.setOnClickListener {
-                    val intent = Intent(applicationContext, DetailActivity::class.java)
-                    startActivity(intent)
-                }
 
-                lightVibrantSwatch.setOnClickListener {
-                    val intent = Intent(applicationContext, DetailActivity::class.java)
-                    startActivity(intent)
+                    vibrantSwatchTextView.setOnClickListener {
+//                        val color = (vibrantSwatchTextView.background as ColorDrawable).color
+//                        public int getRgb()
+                            val backColor = palette.vibrantSwatch?.rgb
+                            val intent = Intent(applicationContext, DetailActivity::class.java)
+                            intent.putExtra("VIB", backColor)
+//                        Log.d("gg", color.toString())
+                            startActivity(intent)
+                    }
+
+                    darkVibrantSwatch.setOnClickListener {
+                            val intent = Intent(applicationContext, DetailActivity::class.java)
+                            val backColor = palette.darkVibrantSwatch?.rgb
+                            intent.putExtra("VIB", backColor)
+                            startActivity(intent)
+                        }
+
+                    lightVibrantSwatch.setOnClickListener {
+                            val intent = Intent(applicationContext, DetailActivity::class.java)
+                            val backColor = palette.lightVibrantSwatch?.rgb
+                            intent.putExtra("VIB", backColor)
+                            startActivity(intent)
+                        }
+
+//                    mutedSwatch.setOnClickListener {
+//                            val intent = Intent(applicationContext, DetailActivity::class.java)
+//                            val backColor = palette.mutedSwatch?.rgb
+//                            intent.putExtra("VIB", backColor)
+//                            startActivity(intent)
+//                        }
+//
+//                    mutedSwatch.setOnClickListener {
+//                            val intent = Intent(applicationContext, DetailActivity::class.java)
+//                            val backColor = palette.darkMutedSwatch?.rgb
+//                            intent.putExtra("VIB", backColor)
+//                            startActivity(intent)
+//                        }
+//
+//                    mutedSwatch.setOnClickListener {
+//                            val intent = Intent(applicationContext, DetailActivity::class.java)
+//                            val backColor = palette.lightMutedSwatch?.rgb
+//                            intent.putExtra("VIB", backColor)
+//                            startActivity(intent)
+//                    }
+
                 }
 
             }
