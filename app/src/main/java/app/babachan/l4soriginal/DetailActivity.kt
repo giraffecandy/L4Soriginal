@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -495,9 +496,22 @@ val first = (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primary
                 .setPositiveButton("OK",
                     DialogInterface.OnClickListener { dialog, which ->
                         // OK button pressed
+                        val editText = EditText(this)
+                        editText.hint = "Enter your palette name"
+                        AlertDialog.Builder(this)
+//                .setTitle("タイトル")
+                            .setMessage("パレットの名前を入れてね")
+                            .setView(editText)
+                            .setPositiveButton(
+                                "OK"
+                            ) { dialog, which ->
+                                // お好きな処理をどうぞ
+                            }
+                            .show()
                     })
                 .setNegativeButton("Cancel", null)
                 .show()
+
         }
 
         hideButton.setOnClickListener {
