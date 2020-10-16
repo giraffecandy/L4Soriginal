@@ -36,56 +36,48 @@
         app:srcCompat="@drawable/sky" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="64dp"
         android:orientation="vertical"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/getImage">
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <TextView
             android:id="@+id/vibrantSwatchTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:clickable="true"
             android:padding="5dp"
-            android:text="VibrantSwatch" />
+            android:paddingBottom="7dp" />
 
         <TextView
             android:id="@+id/darkVibrantSwatch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:padding="5dp"
-            android:text="DarkVibrantSwatch" />
+            android:paddingBottom="2dp" />
 
         <TextView
             android:id="@+id/lightVibrantSwatch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="LightVibrantSwatch" />
+            android:padding="5dp" />
 
-        <TextView
-            android:id="@+id/mutedSwatch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="MutedSwatch" />
-
-        <TextView
-            android:id="@+id/dark_muted_swatch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="DarkMutedSwatch" />
-
-        <TextView
-            android:id="@+id/lightMutedSwatch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="LightMutedSwatch" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/getImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

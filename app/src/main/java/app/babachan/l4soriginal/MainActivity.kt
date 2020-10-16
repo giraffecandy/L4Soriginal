@@ -2,12 +2,16 @@ package app.babachan.l4soriginal
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.blue
+import androidx.core.graphics.green
+import androidx.core.graphics.red
 import androidx.palette.graphics.Palette
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.String
@@ -32,12 +36,17 @@ class MainActivity : AppCompatActivity() {
                     val vibrantSwatch = findViewById<TextView>(R.id.vibrantSwatchTextView)
                     if (vibrantSwatch != null) {
                         vibrantSwatch.setBackgroundColor(palette.vibrantSwatch!!.rgb)
-                        Log.d("jj", palette.vibrantSwatch.toString())
-                        Log.d("kk", palette.vibrantSwatch!!.rgb.toString())
+                        val bbb =
+
+                            Log.d("dd", palette.vibrantSwatch!!.rgb.red.toString())
+                        Log.d("rafa", palette.vibrantSwatch!!.rgb.green.toString())
+                        Log.d("rarer", palette.vibrantSwatch!!.rgb.blue.toString())
+//                        Log.d("jj", palette.vibrantSwatch.toString())
+//                        Log.d("kk", palette.vibrantSwatch!!.rgb.green.toString())
 
                         vibrantSwatch.setTextColor(palette.getVibrantSwatch()!!.getTitleTextColor())
-                        val hex = String.format("#", palette.vibrantSwatch)
-                        vibrantSwatch.setText(hex)
+//                        val hex = String.format("#", palette.vibrantSwatch)
+//                        vibrantSwatch.setText(hex)
                         val darkVibrantSwatch = findViewById<TextView>(R.id.darkVibrantSwatch)
                         darkVibrantSwatch.setBackgroundColor(
                             palette.getDarkVibrantSwatch()!!.getRgb()
@@ -78,28 +87,38 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     vibrantSwatchTextView.setOnClickListener {
-//                        val color = (vibrantSwatchTextView.background as ColorDrawable).color
-//                        public int getRgb()
-                            val backColor = palette.vibrantSwatch?.rgb
-                            val intent = Intent(applicationContext, DetailActivity::class.java)
-                            intent.putExtra("VIB", backColor)
-//                        Log.d("gg", color.toString())
-                            startActivity(intent)
-                        }
+                        val clr = Color.rgb(
+                            palette.vibrantSwatch!!.rgb.red,
+                            palette.vibrantSwatch!!.rgb.green,
+                            palette.vibrantSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+                    }
 
                     darkVibrantSwatch.setOnClickListener {
-                            val intent = Intent(applicationContext, DetailActivity::class.java)
-                            val backColor = palette.darkVibrantSwatch?.rgb
-                            intent.putExtra("VIB", backColor)
-                            startActivity(intent)
-                        }
+                        val clr = Color.rgb(
+                            palette.vibrantSwatch!!.rgb.red,
+                            palette.vibrantSwatch!!.rgb.green,
+                            palette.vibrantSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+                    }
 
                     lightVibrantSwatch.setOnClickListener {
-                            val intent = Intent(applicationContext, DetailActivity::class.java)
-                            val backColor = palette.lightVibrantSwatch?.rgb
-                            intent.putExtra("VIB", backColor)
-                            startActivity(intent)
-                        }
+                        val clr = Color.rgb(
+                            palette.vibrantSwatch!!.rgb.red,
+                            palette.vibrantSwatch!!.rgb.green,
+                            palette.vibrantSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+
+                    }
 
 //                    mutedSwatch.setOnClickListener {
 //                            val intent = Intent(applicationContext, DetailActivity::class.java)
@@ -124,7 +143,6 @@ class MainActivity : AppCompatActivity() {
 //                        }
 
                 }
-
 
 
             }
@@ -259,30 +277,40 @@ class MainActivity : AppCompatActivity() {
 //                        }
                     }
 
-
                     vibrantSwatchTextView.setOnClickListener {
-//                        val color = (vibrantSwatchTextView.background as ColorDrawable).color
-//                        public int getRgb()
-                            val backColor = palette.vibrantSwatch?.rgb
-                            val intent = Intent(applicationContext, DetailActivity::class.java)
-                            intent.putExtra("VIB", backColor)
-//                        Log.d("gg", color.toString())
-                            startActivity(intent)
+                        val clr = Color.rgb(
+                            palette.vibrantSwatch!!.rgb.red,
+                            palette.vibrantSwatch!!.rgb.green,
+                            palette.vibrantSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
                     }
 
                     darkVibrantSwatch.setOnClickListener {
-                            val intent = Intent(applicationContext, DetailActivity::class.java)
-                            val backColor = palette.darkVibrantSwatch?.rgb
-                            intent.putExtra("VIB", backColor)
-                            startActivity(intent)
-                        }
+                        val clr = Color.rgb(
+                            palette.vibrantSwatch!!.rgb.red,
+                            palette.vibrantSwatch!!.rgb.green,
+                            palette.vibrantSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+                    }
 
                     lightVibrantSwatch.setOnClickListener {
-                            val intent = Intent(applicationContext, DetailActivity::class.java)
-                            val backColor = palette.lightVibrantSwatch?.rgb
-                            intent.putExtra("VIB", backColor)
-                            startActivity(intent)
-                        }
+                        val clr = Color.rgb(
+                            palette.vibrantSwatch!!.rgb.red,
+                            palette.vibrantSwatch!!.rgb.green,
+                            palette.vibrantSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+
+                    }
+
 
 //                    mutedSwatch.setOnClickListener {
 //                            val intent = Intent(applicationContext, DetailActivity::class.java)

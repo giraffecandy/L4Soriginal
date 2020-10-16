@@ -12,6 +12,9 @@ import android.view.WindowManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.blue
+import androidx.core.graphics.green
+import androidx.core.graphics.red
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.realm.Realm
@@ -359,26 +362,33 @@ class DetailActivity : AppCompatActivity() {
 
         val colorPalette = read()
 
-
         val numberOfIndex = paletteDate.lastIndex
+
+        val cccd = intent.getIntExtra("cdc", 443)
+        primaryTextView.setBackgroundColor(cccd)
+        val primaryRed = cccd.red
+        val primaryGreen = cccd.green
+        val primaryBlue = cccd.blue
 
         paletteDate.forEach { i ->
             val first =
-                (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primaryColorG) * (200 - i.primaryColorG) + (200 - i.primaryColorB) * (200 - i.primaryColorB)
+                (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
 //            i++ ->
+//            val array = intArrayOf(first)
+            val intMin = calcMin(intArrayOf(first))
+
+            fun calcMin(array: IntArray): Int {
+                var intMin = intArrayOf(first)
+                    var  = array[0]
+                for (i in 1 until array.size) {
+                    if (intMin > array[i]) {
+                        intMin = array[i]
+                    }
+                }
+                return intMin
+            }
 
         }
-
-        val array = arrayOf("ee", "dd", " dd", "dd")
-
-        for (i in paletteDate) {
-            val ss = i
-//            val hh: PrimaryDarkPrimaryData = i++
-            val first =
-                (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primaryColorG) * (200 - i.primaryColorG) + (200 - i.primaryColorB) * (200 - i.primaryColorB)
-//val second = (i++).
-        }
-
         //        for (i++ in paletteDate)
         class main() {
             fun main(args: Array<String>) {
@@ -406,60 +416,21 @@ class DetailActivity : AppCompatActivity() {
 
             Log.d("ll", result.toString())
         }
-//        val ff = calculate(paletteDate)
-//        Log.d("ff", ff)
-//        val colorDataList = readAll()
-//
-//        if (colorDataList.isEmpty()) {
-//
-//        }
-        val vibDetail = intent.getIntExtra("VIB", 555)
-        Log.d("sss", vibDetail.toString())
-        val vibDetailInt = vibDetail.toInt()
-        primaryTextView.setBackgroundColor(vibDetailInt)
-        primaryTextView.setText("#" + vibDetail)
-//            primaryTextView.setBackgroundColor()
-//
-//            val v: View = target //    対象のビューです。
-//
-//            val colorInt = v.getBackground().color
-//            val colort = resources.getColor(R.color.primaryCo)
-        val color: Int = vibDetail.toInt()
-
-//            val color = ContextCompat.getColor(applicationContext, vibDetailInt)
-        val red = color shr 16 and 0xFF.toFloat().toInt()
-        val green = color shr 8 and 0xFF.toFloat().toInt()
-        val blue = color shr 0 and 0xFF.toFloat().toInt()
-        val alpha = (color shr 24 and 0xFF.toFloat().toInt()).toFloat()
-
-        primaryTextView.setBackgroundColor(Color.rgb(red, green, blue))
-
-//            fun getRgbFromHex(): IntArray {
-//                val initColor = Color.parseColor(vibDetail)
-//                val r = Color.red(initColor)
-//                val g = Color.green(initColor)
-//                val b = Color.blue(initColor)
-//                return intArrayOf(r, g, b)
-//            }
-
-//            val primaryR = getRgbFromHex()[0]
-//            val primaryG = getRgbFromHex()[1]
-//            val primaryB = getRgbFromHex()[2]
-
-//            primaryTextView.setBackgroundColor(Color.rgb(primaryR, primaryG, primaryB))
-
-//            val c = Color(vibDetail)
-//            val color: Color = Color.decode(vibDetail)
-//            val red: Int = color.getRed()
-//            val blue: Int = color.getBlue()
-//            val green: Int = color.getGreen()
 
 
 //primaryDark
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 //        window.statusBarColor = Color.parseColor("カラーコード")
         //primary
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.rgb(red, green, blue)))
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                Color.rgb(
+                    primaryRed,
+                    primaryGreen,
+                    primaryBlue
+                )
+            )
+        )
         val adapter = RecyclerViewAdapter(this, object : RecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(item: ColorData) {
                 floatingActionButton.backgroundTintList =
@@ -542,7 +513,6 @@ class DetailActivity : AppCompatActivity() {
             }
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
