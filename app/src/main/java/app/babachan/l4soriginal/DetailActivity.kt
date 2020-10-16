@@ -5,10 +5,12 @@ import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -349,7 +351,7 @@ class DetailActivity : AppCompatActivity() {
         PrimaryDarkPrimaryData(900, 38, 50, 56)
     )
 
-val realm: Realm = Realm.getDefaultInstance()
+    val realm: Realm = Realm.getDefaultInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -360,23 +362,24 @@ val realm: Realm = Realm.getDefaultInstance()
 
         val numberOfIndex = paletteDate.lastIndex
 
-        paletteDate.forEach {i->
-           val first =
-               (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primaryColorG) * (200 - i.primaryColorG) + (200 - i.primaryColorB) * (200 - i.primaryColorB)
+        paletteDate.forEach { i ->
+            val first =
+                (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primaryColorG) * (200 - i.primaryColorG) + (200 - i.primaryColorB) * (200 - i.primaryColorB)
 //            i++ ->
 
         }
 
-        val array = arrayOf("ee", "dd" ," dd" ,"dd")
+        val array = arrayOf("ee", "dd", " dd", "dd")
 
         for (i in paletteDate) {
             val ss = i
 //            val hh: PrimaryDarkPrimaryData = i++
-val first = (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primaryColorG) * (200 - i.primaryColorG) + (200 - i.primaryColorB) * (200 - i.primaryColorB)
+            val first =
+                (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primaryColorG) * (200 - i.primaryColorG) + (200 - i.primaryColorB) * (200 - i.primaryColorB)
 //val second = (i++).
         }
 
-//        for (i++ in paletteDate)
+        //        for (i++ in paletteDate)
         class main() {
             fun main(args: Array<String>) {
                 val array = intArrayOf(1, 5, 10, 8, 9)
@@ -489,6 +492,10 @@ val first = (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primary
 //                }
 //            })
 
+        if (textView.background is ColorDrawable) {
+            val cd = textView.background as ColorDrawable
+            val colorCode = cd.color
+        }
         floatingActionButton.setOnClickListener {
             AlertDialog.Builder(this)
 //                    .setTitle("title")
@@ -506,6 +513,15 @@ val first = (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primary
                                 "OK"
                             ) { dialog, which ->
                                 // お好きな処理をどうぞ
+                                val primaryBack: Int =
+                                    (primaryTextView.background as ColorDrawable).color
+                                Log.d("bb", primaryBack.toString())
+                                val darkBack: Int =
+                                    (darkTextView.background as ColorDrawable).color
+
+                                val accentBack: Int =
+                                    (accentTextView.background as ColorDrawable).color
+                                Log.d("bbb", accentBack.toString())
                             }
                             .show()
                     })
@@ -516,10 +532,10 @@ val first = (200 - i.primaryColorR) * (200 - i.primaryColorR) + (200 - i.primary
 
         hideButton.setOnClickListener {
             if (recyclerView.isVisible) {
-            recyclerView.isVisible = false
-            linearLayout.isVisible = false
+                recyclerView.isVisible = false
+                linearLayout.isVisible = false
                 hideButton.setImageResource(R.drawable.ic_baseline_expand_less_24)
-        }else {
+            } else {
                 recyclerView.isVisible = true
                 linearLayout.isVisible = true
                 hideButton.setImageResource(R.drawable.ic_baseline_expand_more_24)

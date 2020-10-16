@@ -51,7 +51,7 @@
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/darkTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2.5" />
