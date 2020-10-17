@@ -370,53 +370,39 @@ class DetailActivity : AppCompatActivity() {
         val primaryGreen = cccd.green
         val primaryBlue = cccd.blue
 
-        paletteDate.forEach { i ->
-            val first =
-                (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
-//            i++ ->
-//            val array = intArrayOf(first)
-            val intMin = calcMin(intArrayOf(first))
-
-            fun calcMin(array: IntArray): Int {
-                var intMin = intArrayOf(first)
-                    var  = array[0]
-                for (i in 1 until array.size) {
-                    if (intMin > array[i]) {
-                        intMin = array[i]
-                    }
-                }
-                return intMin
-            }
-
-        }
+//        paletteDate.forEach { i ->
+//            val first =
+//                (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
+////            i++ ->
+////            val array = intArrayOf(first)
+//            val intMin = calcMin(intArrayOf(first))
+//
+//            fun calcMin(array: IntArray): Int {
+//                var intMin = array[0]
+//                for (i in 1 until array.size) {
+//                    if (intMin > array[i]) {
+//                        intMin = array[i]
+//                    }
+//                }
+//                return intMin
+//            }
+//
+//        }
         //        for (i++ in paletteDate)
-        class main() {
-            fun main(args: Array<String>) {
-                val array = intArrayOf(1, 5, 10, 8, 9)
+
+
+//        fun main(args: Array<String>) {
+            paletteDate.forEach { i ->
+                val first =
+                    (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
+
+                val array = intArrayOf(first)
+                val tty = array.min()
+                Log.d("jjkf", tty.toString())
                 val intMin = calcMin(array)
-                println("最小値は$intMin")
+//                darkTextView.setBackgroundColor(Color.rgb(intMin.primary))
             }
-
-            fun calcMin(array: IntArray): Int {
-                var intMin = array[0]
-                for (i in 1 until array.size) {
-                    if (intMin > array[i]) {
-                        intMin = array[i]
-                    }
-                }
-                return intMin
-            }
-        }
-
-        fun calculate(paletteData: PrimaryDarkPrimaryData): String {
-            val result =
-                (200 - paletteData.primaryColorR) * (200 - paletteData.primaryColorR) + (200 - paletteData.primaryColorG) * (200 - paletteData.primaryColorG) + (200 - paletteData.primaryColorB) * (200 - paletteData.primaryColorB)
-            return result.toString()
-
-
-            Log.d("ll", result.toString())
-        }
-
+//        }
 
 //primaryDark
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -513,6 +499,39 @@ class DetailActivity : AppCompatActivity() {
             }
         }
     }
+
+//    class main() {
+//        fun main(args: Array<String>) {
+//            paletteDate.forEach { i ->
+//                val first =
+//                    (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
+//
+//                val array = intArrayOf(first)
+//                val intMin = calcMin(array)
+//                println("最小値は$intMin")
+//            }
+//        }
+
+        private fun calcMin(array: IntArray): Int {
+            var intMin = array[0]
+            for (i in 1 until array.size) {
+                if (intMin > array[i]) {
+                    intMin = array[i]
+                }
+            }
+            return intMin
+        }
+//    }
+
+    fun calculate(paletteData: PrimaryDarkPrimaryData): String {
+        val result =
+            (200 - paletteData.primaryColorR) * (200 - paletteData.primaryColorR) + (200 - paletteData.primaryColorG) * (200 - paletteData.primaryColorG) + (200 - paletteData.primaryColorB) * (200 - paletteData.primaryColorB)
+        return result.toString()
+
+
+        Log.d("ll", result.toString())
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()

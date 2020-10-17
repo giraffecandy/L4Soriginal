@@ -51,21 +51,24 @@
             android:layout_marginBottom="2dp"
             android:clickable="true"
             android:padding="5dp"
-            android:paddingBottom="7dp" />
+            android:paddingBottom="7dp"
+            android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/darkVibrantSwatch"
+            android:id="@+id/darkVibrantSwatchTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:padding="5dp"
-            android:paddingBottom="2dp" />
+            android:paddingBottom="2dp"
+            android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/lightVibrantSwatch"
+            android:id="@+id/lightVibrantSwatchTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 
