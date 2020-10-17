@@ -1,4 +1,4 @@
-package app.babachan.l4soriginal
+package app.babachan.makeYourPalette
 
 import android.app.Application
 import io.realm.Realm

@@ -1,4 +1,4 @@
-package app.babachan.l4soriginal
+package app.babachan.makeYourPalette
 
 import android.content.Context
 import android.graphics.Color
@@ -8,28 +8,30 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import io.realm.OrderedRealmCollection
 import kotlinx.android.synthetic.main.accent_color_cell.view.*
 
-class likeRecyclerViewAdapter(
+class RecyclerViewAdapter(
     private val context: Context,
-    private var likeList: OrderedRealmCollection<LikeData>?
+    private val listener: OnItemClickListener
 //    private val listener: AdapterView.OnItemClickListener
 ) :
-    RecyclerView.Adapter<likeRecyclerViewAdapter.ViewHolder>() {
+    RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
     //    lateinit var listener: OnItemClickListener
-    private val items: MutableList<LikeData> = mutableListOf()
+    private val items: MutableList<ColorData> = mutableListOf()
 
-    override fun getItemCount(): Int = likeList?.size ?:0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.like_palette_cell, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.accent_color_cell, parent, false)
         return ViewHolder(view)
 
     }
 
+    override fun getItemCount(): Int {
+        return items.size
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val likeData: LikeData = likeList?.get(position) ?: return
-//        holder.
+        val colorData: ColorData = items?.get(position) ?: return
+        holder.bind(colorData, listener)
 //        holder.selectColor.text = item.description
 //        holder.selectColor.setBackgroundColor(item.index)
 //        holder.setOnClickListener {
@@ -38,26 +40,35 @@ class likeRecyclerViewAdapter(
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val likePrimaryTextView: TextView = view.findViewById(R.id.likePrimaryTextView)
-        private val likePrimaryDarkTextView: TextView =
-            view.findViewById(R.id.likePrimaryDarkTextView)
-        private val likeAccentTextView: TextView = view.findViewById(R.id.likeAccentTextView)
+        private val accentColorCell: TextView = view.findViewById(R.id.accentColorCell)
         private val container: ConstraintLayout? = view.container
 
-        fun bind(likeData: LikeData) {
-            likePrimaryTextView.setBackgroundColor(
+        fun bind(colorData: ColorData, listener: OnItemClickListener) {
+            accentColorCell.setBackgroundColor(
                 Color.rgb(
-                    likeData.primaryR, likeData.primaryG, likeData.primaryB
+                    colorData.accentColorR,
+                    colorData.accentColorG,
+                    colorData.accentColorB
                 )
             )
+
+            container?.setOnClickListener {
+                listener.onItemClick(colorData)
+            }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(item: ColorData)
     }
 
 
 //    fun setOnItemClickListener(listener: AdapterView.OnItemClickListener) {}
 
-    fun addAll(items: List<LikeData>) {
+    fun addAll(items: List<ColorData>) {
         this.items.addAll(items)
         notifyDataSetChanged()
     }
+
+
 }

@@ -1,4 +1,4 @@
-package app.babachan.l4soriginal
+package app.babachan.makeYourPalette
 
 open class ColorData(
     var index: Int = 0,

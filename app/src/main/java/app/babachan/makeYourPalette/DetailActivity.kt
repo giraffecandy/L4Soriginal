@@ -1,16 +1,14 @@
-package app.babachan.l4soriginal
+package app.babachan.makeYourPalette
 
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import android.widget.EditText
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
@@ -417,6 +415,7 @@ class DetailActivity : AppCompatActivity() {
                 )
             )
         )
+
         val adapter = RecyclerViewAdapter(this, object : RecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(item: ColorData) {
                 floatingActionButton.backgroundTintList =
@@ -467,7 +466,7 @@ class DetailActivity : AppCompatActivity() {
                             .setMessage("パレットの名前を入れてね")
                             .setView(editText)
                             .setPositiveButton(
-                                "OK"
+                                "はい"
                             ) { dialog, which ->
                                 // お好きな処理をどうぞ
                                 val primaryBack: Int =
@@ -482,7 +481,7 @@ class DetailActivity : AppCompatActivity() {
                             }
                             .show()
                     })
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton("いいえ", null)
                 .show()
 
         }

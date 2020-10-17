@@ -1,4 +1,4 @@
-package app.babachan.l4soriginal
+package app.babachan.makeYourPalette
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
