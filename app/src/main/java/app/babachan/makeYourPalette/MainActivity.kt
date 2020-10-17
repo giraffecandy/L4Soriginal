@@ -89,20 +89,6 @@ class MainActivity : AppCompatActivity() {
                         lightMutedSwatch.text = hexLightMutedColor
 //                        lightMutedSwatch.setText(palette.lightMutedSwatch!!.rgb)
 
-//                        val lightMutedSwatch = findViewById<TextView>(R.id.lightMutedSwatch)
-//                        lightMutedSwatch.setBackgroundColor(palette.lightMutedSwatch!!.rgb)
-//                        lightMutedSwatch.setBackgroundColor(
-//                            if (palette.lightMutedSwatch != null) {
-//                                palette.lightMutedSwatch!!.rgb
-//                            } else {
-//                                5
-//                            }
-//                        )
-//                        if (palette.lightMutedSwatch != null) {
-//                            lightMutedSwatch.setTextColor(
-//                                palette.lightMutedSwatch!!.titleTextColor
-//
-//                        )}
                     }
 
                     vibrantSwatch.setOnClickListener {
@@ -112,6 +98,8 @@ class MainActivity : AppCompatActivity() {
                             palette.vibrantSwatch!!.rgb.blue
                         )
                         val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = vibrantSwatch.text
+                        intent.putExtra("colorCode", colorCode)
                         intent.putExtra("cdc", clr)
                         startActivity(intent)
                     }
@@ -123,6 +111,8 @@ class MainActivity : AppCompatActivity() {
                             palette.vibrantSwatch!!.rgb.blue
                         )
                         val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = darkVibrantSwatch.text
+                        intent.putExtra("colorCode", colorCode)
                         intent.putExtra("cdc", clr)
                         startActivity(intent)
                     }
@@ -134,61 +124,57 @@ class MainActivity : AppCompatActivity() {
                             palette.vibrantSwatch!!.rgb.blue
                         )
                         val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = lightVibrantSwatch.text
+                        intent.putExtra("colorCode", colorCode)
                         intent.putExtra("cdc", clr)
                         startActivity(intent)
 
                     }
 
-//                    mutedSwatch.setOnClickListener {
-//                            val intent = Intent(applicationContext, DetailActivity::class.java)
-//                            val backColor = palette.mutedSwatch?.rgb
-//                            intent.putExtra("VIB", backColor)
-//                        Log.d("bbb", backColor.toString())
-//                            startActivity(intent)
-//                        }
-//
-//                    mutedSwatch.setOnClickListener {
-//                            val intent = Intent(applicationContext, DetailActivity::class.java)
-//                            val backColor = palette.darkMutedSwatch?.rgb
-//                            intent.putExtra("VIB", backColor)
-//                            startActivity(intent)
-//                        }
-//
-//                    mutedSwatch.setOnClickListener {
-//                            val intent = Intent(applicationContext, DetailActivity::class.java)
-//                            val backColor = palette.lightMutedSwatch?.rgb
-//                            intent.putExtra("VIB", backColor)
-//                            startActivity(intent)
-//                        }
+                    mutedSwatch.setOnClickListener {
+                        val clr = Color.rgb(
+                            palette.mutedSwatch!!.rgb.red,
+                            palette.mutedSwatch!!.rgb.green,
+                            palette.mutedSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = mutedSwatch.text
+                        intent.putExtra("colorCode", colorCode)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+                        }
+
+                    darkMutedSwatch.setOnClickListener {
+                        val clr = Color.rgb(
+                            palette.darkMutedSwatch!!.rgb.red,
+                            palette.darkMutedSwatch!!.rgb.green,
+                            palette.darkMutedSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = darkMutedSwatch.text
+                        intent.putExtra("colorCode", colorCode)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+                        }
+
+                    lightMutedSwatch.setOnClickListener {
+                        val clr = Color.rgb(
+                            palette.lightMutedSwatch!!.rgb.red,
+                            palette.lightMutedSwatch!!.rgb.green,
+                            palette.lightMutedSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = lightMutedSwatch.text
+                        intent.putExtra("colorCode", colorCode)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+                        }
 
                 }
 
 
             }
         })
-//        object PixelColorTest {
-//            @JvmStatic
-//            fun main(args: Array<kotlin.String>) {
-//                try {
-//                    val filePath = "c:\\test\\test.jpeg"
-//
-//                    //画像ファイルを読み込む
-//                    val clr = R.id.primaryTextView
-//
-//                    //座標(10,20)の色を取得
-//                    val color = Color(clr.getRGB(10, 20))
-//
-//                    //取得した色を標準出力
-//                    System.out.println("R:" + color.getRed())
-//                    System.out.println("G:" + color.getGreen())
-//                    System.out.println("B:" + color.getBlue())
-//                    System.out.println("A:" + color.getAlpha())
-//                } catch (e: IOException) {
-//                    e.printStackTrace()
-//                }
-//            }
-//        }
-
 
         getImage.setOnClickListener {
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
@@ -196,21 +182,6 @@ class MainActivity : AppCompatActivity() {
             intent.type = "image/*"
             startActivityForResult(intent, readRequestCode)
         }
-
-
-//        vibrantSwatchTextView.setOnClickListener {
-//            val vibColor = vibrantSwatchTextView.getBackground()
-////            val vibColor = vibrantSwatchTextView.text.toString()
-//            val vibrantIntent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("VIB", vibColor)
-//            Log.d("gg", vibColor)
-////            if (VIB == null) {
-////                Toast.makeText(applicationContext, "色がありません", Toast.LENGTH_SHORT).show()
-////
-////            }
-//            startActivity(vibrantIntent)
-//        }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
@@ -226,8 +197,6 @@ class MainActivity : AppCompatActivity() {
         val getImageView = findViewById<ImageView>(R.id.imageView)
         val bmp = (getImageView.drawable as BitmapDrawable).bitmap
 
-//        val image = imageView
-//        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.sky)
 
         Palette.generateAsync(bmp, object : Palette.PaletteAsyncListener {
             override fun onGenerated(palette: Palette?) {
@@ -276,6 +245,8 @@ class MainActivity : AppCompatActivity() {
                             palette.vibrantSwatch!!.rgb.blue
                         )
                         val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = vibrantSwatch.text
+                        intent.putExtra("colorCode", colorCode)
                         intent.putExtra("cdc", clr)
                         startActivity(intent)
                     }
@@ -287,6 +258,8 @@ class MainActivity : AppCompatActivity() {
                             palette.vibrantSwatch!!.rgb.blue
                         )
                         val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = darkVibrantSwatch.text
+                        intent.putExtra("colorCode", colorCode)
                         intent.putExtra("cdc", clr)
                         startActivity(intent)
                     }
@@ -298,17 +271,55 @@ class MainActivity : AppCompatActivity() {
                             palette.vibrantSwatch!!.rgb.blue
                         )
                         val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = lightVibrantSwatch.text
+                        intent.putExtra("colorCode", colorCode)
                         intent.putExtra("cdc", clr)
                         startActivity(intent)
 
                     }
 
+                    mutedSwatch.setOnClickListener {
+                        val clr = Color.rgb(
+                            palette.mutedSwatch!!.rgb.red,
+                            palette.mutedSwatch!!.rgb.green,
+                            palette.mutedSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = mutedSwatch.text
+                        intent.putExtra("colorCode", colorCode)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+                    }
+
+                    darkMutedSwatch.setOnClickListener {
+                        val clr = Color.rgb(
+                            palette.darkMutedSwatch!!.rgb.red,
+                            palette.darkMutedSwatch!!.rgb.green,
+                            palette.darkMutedSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = darkMutedSwatch.text
+                        intent.putExtra("colorCode", colorCode)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+                    }
+
+                    lightMutedSwatch.setOnClickListener {
+                        val clr = Color.rgb(
+                            palette.lightMutedSwatch!!.rgb.red,
+                            palette.lightMutedSwatch!!.rgb.green,
+                            palette.lightMutedSwatch!!.rgb.blue
+                        )
+                        val intent = Intent(applicationContext, DetailActivity::class.java)
+                        val colorCode = lightMutedSwatch.text
+                        intent.putExtra("colorCode", colorCode)
+                        intent.putExtra("cdc", clr)
+                        startActivity(intent)
+                    }
 
                 }
 
             }
-
-
     }
 )}
 }

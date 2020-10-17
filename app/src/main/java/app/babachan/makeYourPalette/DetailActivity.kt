@@ -26,7 +26,7 @@ class DetailActivity : AppCompatActivity() {
 
 
         //red
-        ColorData(100, 255, 138, 128),
+        ColorData(100, 255, 138, 128, "#ffebee"),
         ColorData(200, 255, 82, 82),
         ColorData(400, 255, 23, 68),
         ColorData(700, 213, 0, 0),
@@ -368,6 +368,9 @@ class DetailActivity : AppCompatActivity() {
         val primaryGreen = cccd.green
         val primaryBlue = cccd.blue
 
+        val colorCode = intent.getStringExtra("colorCode")
+        primaryTextView.text = "$colorCode"
+
 //        paletteDate.forEach { i ->
 //            val first =
 //                (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
@@ -390,16 +393,16 @@ class DetailActivity : AppCompatActivity() {
 
 
 //        fun main(args: Array<String>) {
-            paletteDate.forEach { i ->
-                val first =
-                    (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
+        paletteDate.forEach { i ->
+            val first =
+                (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
 
-                val array = intArrayOf(first)
-                val tty = array.min()
-                Log.d("jjkf", tty.toString())
-                val intMin = calcMin(array)
+            val array = intArrayOf(first)
+            val tty = array.min()
+            Log.d("jjkf", tty.toString())
+            val intMin = calcMin(array)
 //                darkTextView.setBackgroundColor(Color.rgb(intMin.primary))
-            }
+        }
 //        }
 
 //primaryDark
@@ -418,6 +421,7 @@ class DetailActivity : AppCompatActivity() {
 
         val adapter = RecyclerViewAdapter(this, object : RecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(item: ColorData) {
+                val code: String = item.colorCode
                 floatingActionButton.backgroundTintList =
                     ColorStateList.valueOf(
                         Color.rgb(
@@ -433,7 +437,15 @@ class DetailActivity : AppCompatActivity() {
                         item.accentColorB
                     )
                 )
-//                floatingActionButton.setBackgroundColor(Color.rgb(item.accentColorR, item.accentColorG, item.accentColorB))
+
+                val rgbColor = Color.rgb(
+                    item.accentColorR,
+                    item.accentColorG,
+                    item.accentColorB
+                )
+                val hexVibColors = "#" + Integer.toHexString(rgbColor).substring(2)
+                val hexVibColor = "$hexVibColors"
+                accentTextView.text = hexVibColor
             }
         })
         recyclerView.layoutManager =
@@ -511,15 +523,15 @@ class DetailActivity : AppCompatActivity() {
 //            }
 //        }
 
-        private fun calcMin(array: IntArray): Int {
-            var intMin = array[0]
-            for (i in 1 until array.size) {
-                if (intMin > array[i]) {
-                    intMin = array[i]
-                }
+    private fun calcMin(array: IntArray): Int {
+        var intMin = array[0]
+        for (i in 1 until array.size) {
+            if (intMin > array[i]) {
+                intMin = array[i]
             }
-            return intMin
         }
+        return intMin
+    }
 //    }
 
     fun calculate(paletteData: PrimaryDarkPrimaryData): String {

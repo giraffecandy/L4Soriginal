@@ -10,5 +10,6 @@ open class ColorData(
 //    var primaryDakColorB: Int = 0,
     var accentColorR: Int = 0,
     var accentColorG: Int = 0,
-    var accentColorB: Int = 0
+    var accentColorB: Int = 0,
+    var colorCode: String = ""
 )

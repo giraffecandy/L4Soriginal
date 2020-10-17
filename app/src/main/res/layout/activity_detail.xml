@@ -54,14 +54,16 @@
             android:id="@+id/darkTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.5" />
+            android:layout_weight="2.25"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/accentTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:background="@drawable/frame" />
+            android:layout_weight="1.75"
+            android:background="@drawable/frame"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
