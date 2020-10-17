@@ -31,65 +31,81 @@ class MainActivity : AppCompatActivity() {
             override fun onGenerated(palette: Palette?) {
                 if (palette != null) {
                     // VibrantSwatch
-                    val vibrantSwatch = findViewById<TextView>(R.id.vibrantSwatchTextView)
+                    val vibrantSwatch = findViewById<TextView>(R.id.vibrantSwatch)
                     if (vibrantSwatch != null) {
 
                         vibrantSwatch.setBackgroundColor(palette.vibrantSwatch!!.rgb)
                         val intVibColor = palette.vibrantSwatch!!.rgb
                         val hexVibColors = "#" + Integer.toHexString(intVibColor).substring(2)
                         val hexVibColor = "$hexVibColors"
-                        val vibrantSwatchTextView =
-                            findViewById<TextView>(R.id.vibrantSwatchTextView)
-                        vibrantSwatchTextView.text = hexVibColor
+                        val vibrantSwatchTextView = findViewById<TextView>(R.id.vibrantSwatch)
+                        vibrantSwatch.text = hexVibColor
 //                        vibrantSwatch.setTextColor(palette.vibrantSwatch!!.titleTextColor)
 
                         val darkVibrantSwatch =
-                            findViewById<TextView>(R.id.darkVibrantSwatchTextView)
+                            findViewById<TextView>(R.id.darkVibrantSwatch)
                         darkVibrantSwatch.setBackgroundColor(palette.darkVibrantSwatch!!.rgb)
                         val intDarkColor = palette.darkVibrantSwatch!!.rgb
                         val hexDarkColors = "#" + Integer.toHexString(intDarkColor).substring(2)
                         val hexDarkColor = "$hexDarkColors"
                         val darkVibrantSwatchTextView =
-                            findViewById<TextView>(R.id.darkVibrantSwatchTextView)
+                            findViewById<TextView>(R.id.darkVibrantSwatch)
                         darkVibrantSwatchTextView.text = hexDarkColor
 //                        vibrantSwatch.setTextColor(palette.darkVibrantSwatch!!.titleTextColor)
 
                         val lightVibrantSwatch =
-                            findViewById<TextView>(R.id.lightVibrantSwatchTextView)
+                            findViewById<TextView>(R.id.lightVibrantSwatch)
                         lightVibrantSwatch.setBackgroundColor(palette.lightVibrantSwatch!!.rgb)
                         val intLightColor = palette.lightVibrantSwatch!!.rgb
                         val hexLightColors = "#" + Integer.toHexString(intLightColor).substring(2)
                         val hexLightColor = "$hexLightColors"
                         val lightVibrantSwatchTextView =
-                            findViewById<TextView>(R.id.lightVibrantSwatchTextView)
+                            findViewById<TextView>(R.id.lightVibrantSwatch)
                         lightVibrantSwatchTextView.text = hexLightColor
 //                        lightVibrantSwatch.setTextColor(palette.lightVibrantSwatch!!.titleTextColor)
 
-//                        //MutedSwatch
-//                        val mutedSwatch = findViewById<TextView>(R.id.mutedSwatch)
-//                        mutedSwatch.setBackgroundColor(palette.mutedSwatch!!.rgb)
+                        //MutedSwatch
+                        val mutedSwatch = findViewById<TextView>(R.id.mutedSwatch)
+                        mutedSwatch.setBackgroundColor(palette.mutedSwatch!!.rgb)
+                        val muted = palette.mutedSwatch!!.rgb
+                        val hexMuted = "#" + Integer.toHexString(muted).substring(2)
+                        val hexMutedColor = "$hexMuted"
+                        mutedSwatch.text = hexMutedColor
 //                        mutedSwatch.setTextColor(palette.getMutedSwatch()!!.getTitleTextColor())
-//                        val darkMutedSwatch = findViewById<TextView>(R.id.dark_muted_swatch)
-//                        darkMutedSwatch.setBackgroundColor(palette.getDarkMutedSwatch()!!.getRgb())
-//                        darkMutedSwatch.setTextColor(
-//                            palette.getDarkMutedSwatch()!!.getTitleTextColor()
-//                        )
+
+                        val darkMutedSwatch = findViewById<TextView>(R.id.darkMutedSwatch)
+                        darkMutedSwatch.setBackgroundColor(palette.darkMutedSwatch!!.rgb)
+                        val darkMuted = palette.darkMutedSwatch!!.rgb
+                        val hexDarkMuted = "#" + Integer.toHexString(darkMuted).substring(2)
+                        val hexDarkMutedColor = "$hexDarkMuted"
+                        darkMutedSwatch.text = hexDarkMutedColor
+//                        darkMutedSwatch.setTextColor(palette.darkMutedSwatch!!.titleTextColor)
+
+                        val lightMutedSwatch = findViewById<TextView>(R.id.lightMutedSwatch)
+                        lightMutedSwatch.setBackgroundColor(palette.lightMutedSwatch!!.rgb)
+                        val lightMuted = palette.lightMutedSwatch!!.rgb
+                        val hexLightMuted = "#" + Integer.toHexString(lightMuted).substring(2)
+                        val hexLightMutedColor = "$hexLightMuted"
+                        lightMutedSwatch.text = hexLightMutedColor
+//                        lightMutedSwatch.setText(palette.lightMutedSwatch!!.rgb)
+
 //                        val lightMutedSwatch = findViewById<TextView>(R.id.lightMutedSwatch)
+//                        lightMutedSwatch.setBackgroundColor(palette.lightMutedSwatch!!.rgb)
 //                        lightMutedSwatch.setBackgroundColor(
 //                            if (palette.lightMutedSwatch != null) {
-//                                palette.getLightMutedSwatch()!!.getRgb()
+//                                palette.lightMutedSwatch!!.rgb
 //                            } else {
 //                                5
 //                            }
 //                        )
 //                        if (palette.lightMutedSwatch != null) {
 //                            lightMutedSwatch.setTextColor(
-//                                palette.getLightMutedSwatch()!!.getTitleTextColor()
+//                                palette.lightMutedSwatch!!.titleTextColor
 //
 //                        )}
                     }
 
-                    vibrantSwatchTextView.setOnClickListener {
+                    vibrantSwatch.setOnClickListener {
                         val clr = Color.rgb(
                             palette.vibrantSwatch!!.rgb.red,
                             palette.vibrantSwatch!!.rgb.green,
@@ -100,7 +116,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
 
-                    darkVibrantSwatchTextView.setOnClickListener {
+                    darkVibrantSwatch.setOnClickListener {
                         val clr = Color.rgb(
                             palette.vibrantSwatch!!.rgb.red,
                             palette.vibrantSwatch!!.rgb.green,
@@ -111,7 +127,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
 
-                    lightVibrantSwatchTextView.setOnClickListener {
+                    lightVibrantSwatch.setOnClickListener {
                         val clr = Color.rgb(
                             palette.vibrantSwatch!!.rgb.red,
                             palette.vibrantSwatch!!.rgb.green,
@@ -217,7 +233,7 @@ class MainActivity : AppCompatActivity() {
             override fun onGenerated(palette: Palette?) {
                 if (palette != null) {
 
-                    val vibrantSwatch = findViewById<TextView>(R.id.vibrantSwatchTextView)
+                    val vibrantSwatch = findViewById<TextView>(R.id.vibrantSwatch)
                     if (vibrantSwatch != null) {
 
                         vibrantSwatch.setBackgroundColor(palette.vibrantSwatch!!.rgb)
@@ -225,65 +241,35 @@ class MainActivity : AppCompatActivity() {
                         val hexVibColors = "#" + Integer.toHexString(intVibColor).substring(2)
                         val hexVibColor = "$hexVibColors"
                         val vibrantSwatchTextView =
-                            findViewById<TextView>(R.id.vibrantSwatchTextView)
+                            findViewById<TextView>(R.id.vibrantSwatch)
                         vibrantSwatchTextView.text = hexVibColor
 //                        vibrantSwatch.setTextColor(palette.vibrantSwatch!!.titleTextColor)
 
                         val darkVibrantSwatch =
-                            findViewById<TextView>(R.id.darkVibrantSwatchTextView)
+                            findViewById<TextView>(R.id.darkVibrantSwatch)
                         darkVibrantSwatch.setBackgroundColor(palette.darkVibrantSwatch!!.rgb)
                         val intDarkColor = palette.darkVibrantSwatch!!.rgb
                         val hexDarkColors = "#" + Integer.toHexString(intDarkColor).substring(2)
                         val hexDarkColor = "$hexDarkColors"
                         val darkVibrantSwatchTextView =
-                            findViewById<TextView>(R.id.darkVibrantSwatchTextView)
+                            findViewById<TextView>(R.id.darkVibrantSwatch)
                         darkVibrantSwatchTextView.text = hexDarkColor
 //                        vibrantSwatch.setTextColor(palette.darkVibrantSwatch!!.titleTextColor)
 
                         val lightVibrantSwatch =
-                            findViewById<TextView>(R.id.lightVibrantSwatchTextView)
+                            findViewById<TextView>(R.id.lightVibrantSwatch)
                         lightVibrantSwatch.setBackgroundColor(palette.lightVibrantSwatch!!.rgb)
                         val intLightColor = palette.lightVibrantSwatch!!.rgb
                         val hexLightColors = "#" + Integer.toHexString(intLightColor).substring(2)
                         val hexLightColor = "$hexLightColors"
                         val lightVibrantSwatchTextView =
-                            findViewById<TextView>(R.id.lightVibrantSwatchTextView)
+                            findViewById<TextView>(R.id.lightVibrantSwatch)
                         lightVibrantSwatchTextView.text = hexLightColor
 //                        lightVibrantSwatch.setTextColor(palette.lightVibrantSwatch!!.titleTextColor)
 
-//                        //MutedSwatch
-//                        val mutedSwatch = findViewById<TextView>(R.id.mutedSwatch)
-//                        palette.getMutedSwatch()?.getRgb()?.let { mutedSwatch.setBackgroundColor(it) }
-//                        palette.getMutedSwatch()?.getTitleTextColor()?.let {
-//                            mutedSwatch.setTextColor(
-//                                it
-//                            )
-//                        }
-//                        val darkMutedSwatch = findViewById<TextView>(R.id.dark_muted_swatch)
-//                        palette.getDarkMutedSwatch()?.getRgb()?.let {
-//                            darkMutedSwatch.setBackgroundColor(
-//                                it
-//                            )
-//                        }
-//                        palette.getDarkMutedSwatch()?.getTitleTextColor()?.let {
-//                            darkMutedSwatch.setTextColor(
-//                                it
-//                            )
-//                        }
-//                        val lightMutedSwatch = findViewById<TextView>(R.id.lightMutedSwatch)
-//                        palette.getLightMutedSwatch()?.getRgb()?.let {
-//                            lightMutedSwatch.setBackgroundColor(
-//                                it
-//                            )
-//                        }
-//                        palette.getLightMutedSwatch()?.getTitleTextColor()?.let {
-//                            lightMutedSwatch.setTextColor(
-//                                it
-//                            )
-//                        }
                     }
 
-                    vibrantSwatchTextView.setOnClickListener {
+                    vibrantSwatch.setOnClickListener {
                         val clr = Color.rgb(
                             palette.vibrantSwatch!!.rgb.red,
                             palette.vibrantSwatch!!.rgb.green,
@@ -294,7 +280,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
 
-                    darkVibrantSwatchTextView.setOnClickListener {
+                    darkVibrantSwatch.setOnClickListener {
                         val clr = Color.rgb(
                             palette.vibrantSwatch!!.rgb.red,
                             palette.vibrantSwatch!!.rgb.green,
@@ -305,7 +291,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
 
-                    lightVibrantSwatchTextView.setOnClickListener {
+                    lightVibrantSwatch.setOnClickListener {
                         val clr = Color.rgb(
                             palette.vibrantSwatch!!.rgb.red,
                             palette.vibrantSwatch!!.rgb.green,
@@ -317,31 +303,12 @@ class MainActivity : AppCompatActivity() {
 
                     }
 
-
-//                    mutedSwatch.setOnClickListener {
-//                            val intent = Intent(applicationContext, DetailActivity::class.java)
-//                            val backColor = palette.mutedSwatch?.rgb
-//                            intent.putExtra("VIB", backColor)
-//                            startActivity(intent)
-//                        }
-//
-//                    mutedSwatch.setOnClickListener {
-//                            val intent = Intent(applicationContext, DetailActivity::class.java)
-//                            val backColor = palette.darkMutedSwatch?.rgb
-//                            intent.putExtra("VIB", backColor)
-//                            startActivity(intent)
-//                        }
-//
-//                    mutedSwatch.setOnClickListener {
-//                            val intent = Intent(applicationContext, DetailActivity::class.java)
-//                            val backColor = palette.lightMutedSwatch?.rgb
-//                            intent.putExtra("VIB", backColor)
-//                            startActivity(intent)
-//                    }
 
                 }
 
             }
-        })
+
+
     }
+)}
 }
