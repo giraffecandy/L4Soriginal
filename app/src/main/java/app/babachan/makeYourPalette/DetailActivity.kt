@@ -2,6 +2,7 @@ package app.babachan.makeYourPalette
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -9,6 +10,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
@@ -18,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_detail.*
+import java.util.*
 
 
 class DetailActivity : AppCompatActivity() {
@@ -358,7 +362,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val colorPalette = read()
+//        val colorPalette = read()
 
         val numberOfIndex = paletteDate.lastIndex
 
@@ -401,6 +405,7 @@ class DetailActivity : AppCompatActivity() {
             val tty = array.min()
             Log.d("jjkf", tty.toString())
             val intMin = calcMin(array)
+            Log.d("jjd", intMin.toString())
 //                darkTextView.setBackgroundColor(Color.rgb(intMin.primary))
         }
 //        }
@@ -421,7 +426,7 @@ class DetailActivity : AppCompatActivity() {
 
         val adapter = RecyclerViewAdapter(this, object : RecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(item: ColorData) {
-                val code: String = item.colorCode
+//                val code: Int = item.colorCode.toInt()
                 floatingActionButton.backgroundTintList =
                     ColorStateList.valueOf(
                         Color.rgb(
@@ -454,23 +459,21 @@ class DetailActivity : AppCompatActivity() {
 
         adapter.addAll(colorData)
 
-//            adapter.setOnItemClickListener(object: CustomAdapter.OnItemClickListener{
-//                override fun onItemClickListener(view: View, position: Int) {
-//
-//                }
-//            })
-
-        if (textView.background is ColorDrawable) {
-            val cd = textView.background as ColorDrawable
-            val colorCode = cd.color
-        }
+        val likeData: LikeData? = read()
         floatingActionButton.setOnClickListener {
             AlertDialog.Builder(this)
 //                    .setTitle("title")
                 .setMessage("このパレットをお気に入りに追加しますか")
-                .setPositiveButton("OK",
+                .setPositiveButton("はい",
                     DialogInterface.OnClickListener { dialog, which ->
                         // OK button pressed
+                        if (textView.background is ColorDrawable) {
+                            val cd = textView.background as ColorDrawable
+                            val colorCode = cd.color
+                            Log.d("ssd", colorCode.toString())
+                        } else {
+                            Log.d("ssd", "null")
+                        }
                         val editText = EditText(this)
                         editText.hint = "Enter your palette name"
                         AlertDialog.Builder(this)
@@ -478,18 +481,24 @@ class DetailActivity : AppCompatActivity() {
                             .setMessage("パレットの名前を入れてね")
                             .setView(editText)
                             .setPositiveButton(
-                                "はい"
+                                "OK"
                             ) { dialog, which ->
                                 // お好きな処理をどうぞ
+                                val name = editText.text.toString()
+                                val primaryTextView = findViewById<TextView>(R.id.primaryTextView)
                                 val primaryBack: Int =
                                     (primaryTextView.background as ColorDrawable).color
                                 Log.d("bb", primaryBack.toString())
+                                val darkTextView = findViewById<TextView>(R.id.darkTextView)
                                 val darkBack: Int =
                                     (darkTextView.background as ColorDrawable).color
-
+                                val accentTextView = findViewById<TextView>(R.id.accentTextView)
                                 val accentBack: Int =
                                     (accentTextView.background as ColorDrawable).color
                                 Log.d("bbb", accentBack.toString())
+                                save(name, primaryBack, darkBack, accentBack)
+                                val intent = Intent(applicationContext, LikeActivity::class.java)
+                                startActivity(intent)
                             }
                             .show()
                     })
@@ -534,23 +543,24 @@ class DetailActivity : AppCompatActivity() {
     }
 //    }
 
-    fun calculate(paletteData: PrimaryDarkPrimaryData): String {
-        val result =
-            (200 - paletteData.primaryColorR) * (200 - paletteData.primaryColorR) + (200 - paletteData.primaryColorG) * (200 - paletteData.primaryColorG) + (200 - paletteData.primaryColorB) * (200 - paletteData.primaryColorB)
-        return result.toString()
+    private fun save(name: String, primaryBack: Int, darkBack: Int, accentBack: Int) {
+        realm.executeTransaction {
+            val likeData = it.createObject(LikeData::class.java, UUID.randomUUID().toString())
+            likeData.name = name
+            likeData.primary = primaryBack
+            likeData.dark = darkBack
+            likeData.accent = accentBack
+        }
 
-
-        Log.d("ll", result.toString())
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
         realm.close()
     }
 
-    fun read(): RealmResults<ColorPalette>? {
-        return realm.where(ColorPalette::class.java).findAll()
+    private fun read(): LikeData? {
+        return realm.where(LikeData::class.java).findFirst()
     }
 
 //    fun setBackgroundColor(){

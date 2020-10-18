@@ -23,6 +23,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        likeListIntent.setOnClickListener {
+            val intent = Intent(applicationContext, LikeActivity::class.java)
+            startActivity(intent)
+        }
 
         val getImageView = findViewById<ImageView>(R.id.imageView)
         val bmp = (getImageView.drawable as BitmapDrawable).bitmap
@@ -106,9 +110,9 @@ class MainActivity : AppCompatActivity() {
 
                     darkVibrantSwatch.setOnClickListener {
                         val clr = Color.rgb(
-                            palette.vibrantSwatch!!.rgb.red,
-                            palette.vibrantSwatch!!.rgb.green,
-                            palette.vibrantSwatch!!.rgb.blue
+                            palette.darkVibrantSwatch!!.rgb.red,
+                            palette.darkVibrantSwatch!!.rgb.green,
+                            palette.darkVibrantSwatch!!.rgb.blue
                         )
                         val intent = Intent(applicationContext, DetailActivity::class.java)
                         val colorCode = darkVibrantSwatch.text
@@ -119,9 +123,9 @@ class MainActivity : AppCompatActivity() {
 
                     lightVibrantSwatch.setOnClickListener {
                         val clr = Color.rgb(
-                            palette.vibrantSwatch!!.rgb.red,
-                            palette.vibrantSwatch!!.rgb.green,
-                            palette.vibrantSwatch!!.rgb.blue
+                            palette.lightVibrantSwatch!!.rgb.red,
+                            palette.lightVibrantSwatch!!.rgb.green,
+                            palette.lightVibrantSwatch!!.rgb.blue
                         )
                         val intent = Intent(applicationContext, DetailActivity::class.java)
                         val colorCode = lightVibrantSwatch.text
@@ -187,6 +191,11 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
         super.onActivityResult(requestCode, resultCode, resultData)
 
+        likeListIntent.setOnClickListener {
+            val intent = Intent(applicationContext, LikeActivity::class.java)
+            startActivity(intent)
+        }
+
         if (requestCode == readRequestCode && resultCode == Activity.RESULT_OK)
             resultData?.data?.also { uri ->
 //                image
@@ -236,6 +245,32 @@ class MainActivity : AppCompatActivity() {
                         lightVibrantSwatchTextView.text = hexLightColor
 //                        lightVibrantSwatch.setTextColor(palette.lightVibrantSwatch!!.titleTextColor)
 
+                        //MutedSwatch
+                        val mutedSwatch = findViewById<TextView>(R.id.mutedSwatch)
+                        mutedSwatch.setBackgroundColor(palette.mutedSwatch!!.rgb)
+                        val muted = palette.mutedSwatch!!.rgb
+                        val hexMuted = "#" + Integer.toHexString(muted).substring(2)
+                        val hexMutedColor = "$hexMuted"
+                        mutedSwatch.text = hexMutedColor
+//                        mutedSwatch.setTextColor(palette.getMutedSwatch()!!.getTitleTextColor())
+
+                        val darkMutedSwatch = findViewById<TextView>(R.id.darkMutedSwatch)
+                        darkMutedSwatch.setBackgroundColor(palette.darkMutedSwatch!!.rgb)
+                        val darkMuted = palette.darkMutedSwatch!!.rgb
+                        val hexDarkMuted = "#" + Integer.toHexString(darkMuted).substring(2)
+                        val hexDarkMutedColor = "$hexDarkMuted"
+                        darkMutedSwatch.text = hexDarkMutedColor
+//                        darkMutedSwatch.setTextColor(palette.darkMutedSwatch!!.titleTextColor)
+
+                        val lightMutedSwatch = findViewById<TextView>(R.id.lightMutedSwatch)
+                        lightMutedSwatch.setBackgroundColor(palette.lightMutedSwatch!!.rgb)
+                        val lightMuted = palette.lightMutedSwatch!!.rgb
+                        val hexLightMuted = "#" + Integer.toHexString(lightMuted).substring(2)
+                        val hexLightMutedColor = "$hexLightMuted"
+                        lightMutedSwatch.text = hexLightMutedColor
+//                        lightMutedSwatch.setText(palette.lightMutedSwatch!!.rgb)
+
+
                     }
 
                     vibrantSwatch.setOnClickListener {
@@ -253,9 +288,9 @@ class MainActivity : AppCompatActivity() {
 
                     darkVibrantSwatch.setOnClickListener {
                         val clr = Color.rgb(
-                            palette.vibrantSwatch!!.rgb.red,
-                            palette.vibrantSwatch!!.rgb.green,
-                            palette.vibrantSwatch!!.rgb.blue
+                            palette.darkVibrantSwatch!!.rgb.red,
+                            palette.darkVibrantSwatch!!.rgb.green,
+                            palette.darkVibrantSwatch!!.rgb.blue
                         )
                         val intent = Intent(applicationContext, DetailActivity::class.java)
                         val colorCode = darkVibrantSwatch.text
@@ -266,9 +301,9 @@ class MainActivity : AppCompatActivity() {
 
                     lightVibrantSwatch.setOnClickListener {
                         val clr = Color.rgb(
-                            palette.vibrantSwatch!!.rgb.red,
-                            palette.vibrantSwatch!!.rgb.green,
-                            palette.vibrantSwatch!!.rgb.blue
+                            palette.lightVibrantSwatch!!.rgb.red,
+                            palette.lightVibrantSwatch!!.rgb.green,
+                            palette.lightVibrantSwatch!!.rgb.blue
                         )
                         val intent = Intent(applicationContext, DetailActivity::class.java)
                         val colorCode = lightVibrantSwatch.text
@@ -316,6 +351,8 @@ class MainActivity : AppCompatActivity() {
                         intent.putExtra("cdc", clr)
                         startActivity(intent)
                     }
+
+
 
                 }
 
