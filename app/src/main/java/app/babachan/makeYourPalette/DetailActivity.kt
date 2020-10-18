@@ -486,9 +486,13 @@ darkTextView.setBackgroundColor(Color.rgb(indexDR, indexDG, indexDB))
         val likeData: LikeData? = read()
         floatingActionButton.setOnClickListener {
             AlertDialog.Builder(this)
-//                    .setTitle("title")
-                .setMessage("このパレットをお気に入りに追加しますか")
-                .setPositiveButton("はい",
+            val editText = EditText(this)
+            editText.hint = "Enter your palette name"
+            AlertDialog.Builder(this)
+                .setTitle("このパレットをお気に入りに追加しますか")
+                .setMessage("パレットの名前を入れてね")
+                .setView(editText)
+                .setPositiveButton("OK",
                     DialogInterface.OnClickListener { dialog, which ->
                         // OK button pressed
                         if (textView.background is ColorDrawable) {
@@ -498,33 +502,21 @@ darkTextView.setBackgroundColor(Color.rgb(indexDR, indexDG, indexDB))
                         } else {
                             Log.d("ssd", "null")
                         }
-                        val editText = EditText(this)
-                        editText.hint = "Enter your palette name"
-                        AlertDialog.Builder(this)
-//                .setTitle("タイトル")
-                            .setMessage("パレットの名前を入れてね")
-                            .setView(editText)
-                            .setPositiveButton(
-                                "OK"
-                            ) { dialog, which ->
-                                // お好きな処理をどうぞ
-                                val name = editText.text.toString()
-                                val primaryTextView = findViewById<TextView>(R.id.primaryTextView)
-                                val primaryBack: Int =
-                                    (primaryTextView.background as ColorDrawable).color
-                                Log.d("bb", primaryBack.toString())
-                                val darkTextView = findViewById<TextView>(R.id.darkTextView)
-                                val darkBack: Int =
-                                    (darkTextView.background as ColorDrawable).color
-                                val accentTextView = findViewById<TextView>(R.id.accentTextView)
-                                val accentBack: Int =
-                                    (accentTextView.background as ColorDrawable).color
-                                Log.d("bbb", accentBack.toString())
-                                save(name, primaryBack, darkBack, accentBack)
-                                val intent = Intent(applicationContext, LikeActivity::class.java)
-                                startActivity(intent)
-                            }
-                            .show()
+                        val name = editText.text.toString()
+                        val primaryTextView = findViewById<TextView>(R.id.primaryTextView)
+                        val primaryBack: Int =
+                            (primaryTextView.background as ColorDrawable).color
+                        Log.d("bb", primaryBack.toString())
+                        val darkTextView = findViewById<TextView>(R.id.darkTextView)
+                        val darkBack: Int =
+                            (darkTextView.background as ColorDrawable).color
+                        val accentTextView = findViewById<TextView>(R.id.accentTextView)
+                        val accentBack: Int =
+                            (accentTextView.background as ColorDrawable).color
+                        Log.d("bbb", accentBack.toString())
+                        save(name, primaryBack, darkBack, accentBack)
+                        val intent = Intent(applicationContext, LikeActivity::class.java)
+                        startActivity(intent)
                     })
                 .setNegativeButton("いいえ", null)
                 .show()
