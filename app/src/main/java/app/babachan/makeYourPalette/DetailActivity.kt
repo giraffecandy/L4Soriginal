@@ -394,20 +394,44 @@ class DetailActivity : AppCompatActivity() {
 //
 //        }
         //        for (i++ in paletteDate)
+        var indexR = 0
+        var indexG = 0
+        var indexB = 0
+        var indexDR = 0
+        var indexDG = 0
+        var indexDB = 0
+        var min = 999999
+        paletteDate.forEach{ i ->
+            val first = (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
 
+            if(first < min) {
+                min = first
+                indexR = i.primaryColorR
+                indexG = i.primaryColorG
+                indexB = i.primaryColorB
+
+                indexDR = i.primaryDakColorR
+                indexDG = i.primaryDakColorG
+                indexDB = i.primaryDakColorB
+
+darkTextView.setBackgroundColor(Color.rgb(indexDR, indexDG, indexDB))
+            }
+//            paletteDate[i.toString().toInt()]
+//            Log.d("tttg", i.toString())
+        }
 
 //        fun main(args: Array<String>) {
-        paletteDate.forEach { i ->
-            val first =
-                (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
-
-            val array = intArrayOf(first)
-            val tty = array.min()
-            Log.d("jjkf", tty.toString())
-            val intMin = calcMin(array)
-            Log.d("jjd", intMin.toString())
-//                darkTextView.setBackgroundColor(Color.rgb(intMin.primary))
-        }
+//        paletteDate.forEach { i ->
+//            val first =
+//                (primaryRed - i.primaryColorR) * (primaryRed - i.primaryColorR) + (primaryGreen - i.primaryColorG) * (primaryGreen - i.primaryColorG) + (primaryBlue - i.primaryColorB) * (primaryBlue - i.primaryColorB)
+//
+//            val array = intArrayOf(first)
+//            val tty = array.min()
+//            Log.d("jjkf", tty.toString())
+//            val intMin = calcMin(array)
+//            Log.d("jjd", intMin.toString())
+////                darkTextView.setBackgroundColor(Color.rgb(intMin.primary))
+//        }
 //        }
 
 //primaryDark

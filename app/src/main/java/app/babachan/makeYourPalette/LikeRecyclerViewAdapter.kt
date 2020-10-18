@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.accent_color_cell.view.*
 class LikeRecyclerViewAdapter(
     private val context: Context,
     private var likeList: OrderedRealmCollection<LikeData>?
+//    private var listener: OnItemClickListener
 //    private val listener: AdapterView.OnItemClickListener
 ) :
     RecyclerView.Adapter<LikeRecyclerViewAdapter.ViewHolder>() {
@@ -61,7 +62,9 @@ class LikeRecyclerViewAdapter(
             val accentColor = "$accentClrs"
             likeAccentTextView.setBackgroundColor(Color.parseColor(accentColor))
 
-
+//            container.setOnClickListener {
+//                listener.onItemClick(likeData)
+//            }
 //            likePrimaryTextView.setBackgroundColor(
 //                Color.rgb(
 //                    likeData.primaryR, likeData.primaryG, likeData.primaryB
@@ -81,4 +84,9 @@ class LikeRecyclerViewAdapter(
         this.likeList?.addAll(items)
         notifyDataSetChanged()
     }
+
+    interface OnItemClickListener{
+        fun onItemClick(item: LikeData)
+    }
+
 }
