@@ -1,4 +1,4 @@
-package app.babachan.makeYourPalette
+package app.babachan.l4soriginal
 
 import android.content.Context
 import android.graphics.Color
@@ -13,9 +13,8 @@ import kotlinx.android.synthetic.main.accent_color_cell.view.*
 
 class LikeRecyclerViewAdapter(
     private val context: Context,
-    private var likeList: OrderedRealmCollection<LikeData>?
-//    private var listener: OnItemClickListener
-//    private val listener: AdapterView.OnItemClickListener
+    private var likeList: OrderedRealmCollection<LikeData>?,
+    private var listener: OnItemClickListener
 ) :
     RecyclerView.Adapter<LikeRecyclerViewAdapter.ViewHolder>() {
     //    lateinit var listener: OnItemClickListener
@@ -33,6 +32,7 @@ class LikeRecyclerViewAdapter(
         holder.likePaletteName.text = likeData.name
 //        holder.selectColor.text = item.description
 //        holder.selectColor.setBackgroundColor(item.index)
+
 //        holder.setOnClickListener {
 //            listener.onItemClickListener(it, position, items[position])
 //        }
@@ -65,25 +65,9 @@ class LikeRecyclerViewAdapter(
 //            container.setOnClickListener {
 //                listener.onItemClick(likeData)
 //            }
-//            likePrimaryTextView.setBackgroundColor(
-//                Color.rgb(
-//                    likeData.primaryR, likeData.primaryG, likeData.primaryB
-//                )
-//            )
-//
-//            likePrimaryDarkTextView.setBackgroundColor(Color.rgb(likeData.primaryDarkR, likeData.primaryDarkG,likeData.primaryDarkB))
-//
-//            likeAccentTextView.setBackgroundColor(Color.rgb(likeData.accentR, likeData.accentG, likeData.accentB))
         }
     }
 
-
-//    fun setOnItemClickListener(listener: AdapterView.OnItemClickListener) {}
-
-    fun addAll(items: List<LikeData>) {
-        this.likeList?.addAll(items)
-        notifyDataSetChanged()
-    }
 
     interface OnItemClickListener{
         fun onItemClick(item: LikeData)

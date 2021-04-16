@@ -1,4 +1,4 @@
-package app.babachan.makeYourPalette
+package app.babachan.l4soriginal
 
 data class PrimaryDarkPrimaryData (
     var  index: Int = 0,

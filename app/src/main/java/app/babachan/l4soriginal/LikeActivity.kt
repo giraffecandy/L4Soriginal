@@ -1,20 +1,12 @@
-package app.babachan.makeYourPalette
+package app.babachan.l4soriginal
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.view.isEmpty
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import io.realm.Realm
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_like.*
 
 
@@ -46,11 +38,11 @@ class LikeActivity : AppCompatActivity() {
 //        val likeData: List<LikeData> = listOf()
         val adapter = LikeRecyclerViewAdapter(
             this, likeList
-//            , object : LikeRecyclerViewAdapter.OnItemClickListener {
-//                override fun onItemClick(item: LikeData) {
-//
-//                }
-//            }
+            , object : LikeRecyclerViewAdapter.OnItemClickListener {
+                override fun onItemClick(item: LikeData) {
+
+                }
+            }
         )
         likeRecyclerView.setHasFixedSize(true)
         likeRecyclerView.layoutManager = LinearLayoutManager(this)

@@ -1,4 +1,4 @@
-package app.babachan.makeYourPalette
+package app.babachan.l4soriginal
 
 import android.content.Context
 import android.graphics.Color

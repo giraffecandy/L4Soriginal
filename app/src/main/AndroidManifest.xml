@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.babachan.makeYourPalette">
+    package="app.babachan.l4soriginal">
 
     <application
-        android:name="app.babachan.makeYourPalette.RealmColorApplication"
+        android:name="app.babachan.l4soriginal.RealmColorApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:largeHeap="true"
@@ -12,9 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="app.babachan.makeYourPalette.LikeActivity"></activity>
-        <activity android:name="app.babachan.makeYourPalette.DetailActivity" />
-        <activity android:name="app.babachan.makeYourPalette.MainActivity">
+        <activity android:name="app.babachan.l4soriginal.LikeActivity"></activity>
+        <activity android:name="app.babachan.l4soriginal.DetailActivity" />
+        <activity android:name="app.babachan.l4soriginal.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
